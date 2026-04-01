@@ -39,7 +39,7 @@ const HeroSection = () => {
           </p>
 
           <motion.a
-            href="https://wa.me/5500000000000"
+            href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gradient-gold text-primary-foreground font-semibold text-lg px-10 py-4 rounded-lg shadow-gold hover:scale-105 transition-transform duration-300 animate-pulse-gold tracking-wide"

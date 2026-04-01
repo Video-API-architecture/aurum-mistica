@@ -15,12 +15,12 @@ const FooterSection = () => {
                 📲 WhatsApp
               </a>
               <a
-                href="https://instagram.com/"
+                href="https://www.tiktok.com/@aurummisticaoficial"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors font-light"
               >
-                📷 Instagram
+                🎵 TikTok
               </a>
             </div>
           </div>

@@ -7,7 +7,7 @@ const FooterSection = () => {
             <h3 className="font-display text-2xl font-semibold text-primary mb-4">Contato</h3>
             <div className="space-y-3">
               <a
-                href="https://wa.me/5500000000000"
+                href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors font-light"

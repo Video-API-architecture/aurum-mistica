@@ -73,7 +73,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen w-full max-w-full overflow-x-hidden flex items-center justify-center"
+    >
       <div className="absolute inset-0">
         <img
           src={cosmicBg}
@@ -114,10 +117,10 @@ const HeroSection = () => {
         </motion.span>
       ))}
 
-      <div className="relative z-10 container mx-auto px-6 max-w-6xl">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+      <div className="relative z-10 container mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
+        <div className="flex w-full min-w-0 flex-col lg:flex-row items-center gap-10 lg:gap-12 xl:gap-16">
           <motion.div
-            className="flex-1 text-center lg:text-left"
+            className="min-w-0 flex-1 text-center lg:text-left"
             variants={textVariants}
             initial="hidden"
             animate="visible"
@@ -129,14 +132,14 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-4"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-4 break-words"
               variants={childVariant}
             >
               <span className="text-shimmer-gold">Aurum Mística</span>
             </motion.h1>
 
             <motion.p
-              className="text-2xl md:text-3xl font-display font-medium text-foreground/90 mb-6"
+              className="text-2xl md:text-3xl font-display font-medium text-foreground/90 mb-6 break-words"
               variants={childVariant}
             >
               Desvende os Mistérios do Seu Caminho ✨🔮
@@ -161,7 +164,7 @@ const HeroSection = () => {
                 href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold text-lg px-10 py-4 rounded-lg shadow-gold hover:scale-105 transition-transform duration-300 animate-pulse-gold tracking-wide"
+                className="shimmer inline-block max-w-full bg-gradient-gold text-primary-foreground font-semibold text-base sm:text-lg px-6 sm:px-10 py-4 rounded-lg shadow-gold hover:scale-105 transition-transform duration-300 animate-pulse-gold tracking-wide text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -172,7 +175,7 @@ const HeroSection = () => {
 
           {/* Photo carousel */}
           <motion.div
-            className="flex-shrink-0 w-64 md:w-72 lg:w-80"
+            className="mx-auto w-full max-w-64 min-w-0 shrink-0 md:max-w-72 lg:mx-0 lg:w-80 lg:max-w-none"
             initial={{ opacity: 0, scale: 0.85, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}

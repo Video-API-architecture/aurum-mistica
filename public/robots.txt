@@ -1,13 +1,13 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
+# Link previews (Facebook, WhatsApp, Instagram) use these crawlers.
+# A 403 in Facebook Sharing Debugger is usually hosting/WAF blocking the crawler — not fixed by robots.txt alone.
 
 User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: meta-externalagent
 Allow: /
 
 User-agent: *

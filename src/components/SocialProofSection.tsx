@@ -23,6 +23,20 @@ const testimonials = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.12,
+      duration: 0.6,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  }),
+};
+
 const SocialProofSection = () => {
   return (
     <section id="depoimentos" className="py-24 bg-gradient-dark">
@@ -31,10 +45,11 @@ const SocialProofSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-            O Que Dizem <span className="text-gradient-gold">Nossos Clientes</span>
+            O Que Dizem <span className="text-shimmer-gold">Nossos Clientes</span>
           </h2>
           <p className="text-muted-foreground font-light">Depoimentos reais de quem já transformou seu caminho</p>
         </motion.div>
@@ -43,25 +58,47 @@ const SocialProofSection = () => {
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="card-mystical p-8 relative hover:glow-gold transition-shadow duration-500"
+              variants={cardVariants}
+              whileHover={{
+                y: -6,
+                transition: { duration: 0.3 },
+              }}
+              className="card-mystical p-8 relative glow-border-hover group"
             >
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: t.stars }).map((_, j) => (
-                  <span key={j} className="text-primary text-lg">★</span>
+                  <motion.span
+                    key={j}
+                    className="text-primary text-lg"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: i * 0.12 + j * 0.05 + 0.3,
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 10,
+                    }}
+                  >
+                    ★
+                  </motion.span>
                 ))}
               </div>
-              <span className="text-primary/20 text-6xl font-display absolute top-4 right-6">"</span>
+              <span className="text-primary/10 text-7xl font-display absolute top-2 right-6 select-none group-hover:text-primary/20 transition-colors duration-500">"</span>
               <p className="text-foreground/85 font-light leading-relaxed mb-6 relative z-10">
                 {t.text}
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-display font-bold">
+                <motion.div
+                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-display font-bold border border-primary/30"
+                  whileHover={{ scale: 1.1, borderColor: "hsl(43 80% 52% / 0.6)" }}
+                >
                   {t.name[0]}
-                </div>
+                </motion.div>
                 <span className="text-sm text-muted-foreground font-medium">{t.name}</span>
               </div>
             </motion.div>

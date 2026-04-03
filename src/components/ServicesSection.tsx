@@ -48,18 +48,42 @@ const sessoes = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 25, scale: 0.95 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.08,
+      duration: 0.5,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  }),
+};
+
+const sectionHeaderVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
 const ServicesSection = () => {
   return (
     <section id="servicos" className="py-24 bg-gradient-cosmic">
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
+          variants={sectionHeaderVariants}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-            Nossos <span className="text-gradient-gold">Serviços</span>
+            Nossos <span className="text-shimmer-gold">Serviços</span>
           </h2>
           <p className="text-muted-foreground font-light max-w-2xl mx-auto">
             Escolha a consulta ideal para o seu momento
@@ -68,9 +92,10 @@ const ServicesSection = () => {
 
         {/* Perguntas Avulsas */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
+          variants={sectionHeaderVariants}
           className="mb-16"
         >
           <h3 className="text-2xl md:text-3xl font-display font-semibold text-center mb-2">
@@ -86,14 +111,22 @@ const ServicesSection = () => {
             {previsoes.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="card-mystical p-6 text-center hover:border-primary/40 transition-colors group"
+                variants={cardVariants}
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                className="card-mystical p-6 text-center glow-border-hover group cursor-default"
               >
-                <span className="text-3xl block mb-3">{item.icon}</span>
-                <h5 className="font-display text-lg font-semibold mb-2 group-hover:text-primary transition-colors">{item.title}</h5>
+                <motion.span
+                  className="text-3xl block mb-3"
+                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {item.icon}
+                </motion.span>
+                <h5 className="font-display text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h5>
                 <p className="text-primary font-bold text-xl">{item.price}</p>
               </motion.div>
             ))}
@@ -105,14 +138,22 @@ const ServicesSection = () => {
             {consultasEspecificas.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="card-mystical p-6 text-center hover:border-primary/40 transition-colors group"
+                variants={cardVariants}
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                className="card-mystical p-6 text-center glow-border-hover group cursor-default"
               >
-                <span className="text-3xl block mb-3">{item.icon}</span>
-                <h5 className="font-display text-lg font-semibold mb-1 group-hover:text-primary transition-colors">{item.title}</h5>
+                <motion.span
+                  className="text-3xl block mb-3"
+                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {item.icon}
+                </motion.span>
+                <h5 className="font-display text-lg font-semibold mb-1 group-hover:text-primary transition-colors duration-300">{item.title}</h5>
                 {item.desc && <p className="text-muted-foreground text-sm mb-2">{item.desc}</p>}
                 <p className="text-primary font-bold text-xl">{item.price}</p>
               </motion.div>
@@ -125,14 +166,22 @@ const ServicesSection = () => {
             {leituras.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="card-mystical p-6 text-center hover:border-primary/40 transition-colors group"
+                variants={cardVariants}
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                className="card-mystical p-6 text-center glow-border-hover group cursor-default"
               >
-                <span className="text-3xl block mb-3">{item.icon}</span>
-                <h5 className="font-display text-base font-semibold mb-2 group-hover:text-primary transition-colors">{item.title}</h5>
+                <motion.span
+                  className="text-3xl block mb-3"
+                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {item.icon}
+                </motion.span>
+                <h5 className="font-display text-base font-semibold mb-2 group-hover:text-primary transition-colors duration-300">{item.title}</h5>
                 <p className="text-primary font-bold text-xl">{item.price}</p>
               </motion.div>
             ))}
@@ -141,9 +190,10 @@ const ServicesSection = () => {
 
         {/* Sessões Ao Vivo */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
+          variants={sectionHeaderVariants}
         >
           <h3 className="text-2xl md:text-3xl font-display font-semibold text-center mb-2">
             🔮 Sessões Ao Vivo
@@ -156,20 +206,37 @@ const ServicesSection = () => {
             {sessoes.map((s, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className={`relative card-mystical p-8 text-center hover:border-primary/40 transition-all duration-300 ${
+                variants={cardVariants}
+                whileHover={{
+                  y: -10,
+                  transition: { duration: 0.4, ease: "easeOut" },
+                }}
+                className={`relative card-mystical p-8 text-center transition-all duration-300 glow-border-hover ${
                   s.popular ? "border-primary/50 scale-[1.02] glow-gold" : ""
                 }`}
               >
                 {s.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-gold text-primary-foreground text-xs font-bold px-4 py-1 rounded-full tracking-wider">
+                  <motion.div
+                    className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-gold text-primary-foreground text-xs font-bold px-4 py-1 rounded-full tracking-wider shimmer"
+                    initial={{ opacity: 0, y: -10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                  >
                     MAIS POPULAR
-                  </div>
+                  </motion.div>
                 )}
-                <span className="text-4xl block mb-4">{s.icon}</span>
+                <motion.span
+                  className="text-4xl block mb-4"
+                  animate={s.popular ? { scale: [1, 1.1, 1] } : {}}
+                  transition={s.popular ? { duration: 2, repeat: Infinity, ease: "easeInOut" } : {}}
+                >
+                  {s.icon}
+                </motion.span>
                 <h4 className="font-display text-2xl font-bold mb-1">{s.title}</h4>
                 <p className="text-muted-foreground text-sm mb-4">{s.duration}</p>
                 <p className="text-primary font-bold text-3xl mb-6">{s.price}</p>
@@ -180,14 +247,16 @@ const ServicesSection = () => {
                     </li>
                   ))}
                 </ul>
-                <a
+                <motion.a
                   href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg hover:scale-105 transition-transform duration-300 text-sm tracking-wide"
+                  className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg hover:scale-105 transition-transform duration-300 text-sm tracking-wide"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   AGENDAR
-                </a>
+                </motion.a>
               </motion.div>
             ))}
           </div>

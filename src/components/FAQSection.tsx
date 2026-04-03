@@ -41,10 +41,11 @@ const FAQSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-            Perguntas <span className="text-gradient-gold">Frequentes</span>
+            Perguntas <span className="text-shimmer-gold">Frequentes</span>
           </h2>
         </motion.div>
 
@@ -52,21 +53,29 @@ const FAQSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
         >
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, i) => (
-              <AccordionItem
+              <motion.div
                 key={i}
-                value={`faq-${i}`}
-                className="card-mystical px-6 border border-border/50"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
               >
-                <AccordionTrigger className="font-display text-lg font-semibold text-foreground hover:text-primary transition-colors py-5">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground font-light leading-relaxed pb-5">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
+                <AccordionItem
+                  value={`faq-${i}`}
+                  className="card-mystical px-6 border border-border/50 glow-border-hover transition-all duration-300"
+                >
+                  <AccordionTrigger className="font-display text-lg font-semibold text-foreground hover:text-primary transition-colors py-5 [&[data-state=open]]:text-primary">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground font-light leading-relaxed pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
             ))}
           </Accordion>
         </motion.div>

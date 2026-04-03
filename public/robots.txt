@@ -1,14 +1,25 @@
-# Link previews (Facebook, WhatsApp, Instagram) use these crawlers.
-# A 403 in Facebook Sharing Debugger is usually hosting/WAF blocking the crawler — not fixed by robots.txt alone.
-
+# Meta / Facebook link previews & scrapers — explicit allow (substring match per robots.txt spec)
 User-agent: facebookexternalhit
 Allow: /
 
 User-agent: Facebot
 Allow: /
 
+User-agent: facebookbot
+Allow: /
+
 User-agent: meta-externalagent
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Everyone else (default)
 User-agent: *
 Allow: /

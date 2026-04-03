@@ -1,3 +1,9 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+# Helps crawlers parse robots.txt reliably (some tools are picky about Content-Type).
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"

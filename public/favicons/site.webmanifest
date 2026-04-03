@@ -1,0 +1,24 @@
+{
+  "name": "Aurum Mística",
+  "short_name": "Aurum Mística",
+  "description": "Consultas de tarot e orientação espiritual com leituras personalizadas.",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#120d1a",
+  "background_color": "#120d1a",
+  "display": "standalone",
+  "start_url": "/"
+}

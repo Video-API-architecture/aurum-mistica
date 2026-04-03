@@ -24,12 +24,15 @@ const StickyHeader = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed left-0 right-0 top-0 z-50 max-w-full overflow-x-hidden transition-all duration-500 ${
         scrolled ? "bg-background/95 backdrop-blur-md border-b border-border/30 shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 max-w-6xl flex items-center justify-between h-16">
-        <a href="#hero" className="font-display text-xl font-bold text-primary hover:opacity-80 transition-opacity">
+      <div className="container mx-auto flex h-16 min-w-0 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+        <a
+          href="#hero"
+          className="min-w-0 shrink font-display text-lg font-bold text-primary transition-opacity hover:opacity-80 sm:text-xl"
+        >
           Aurum Mística
         </a>
 

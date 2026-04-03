@@ -14,8 +14,17 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Cinzel', '"Cormorant Garamond"', 'serif'],
+        display: ['Cinzel', 'serif'],
+        decorative: ['"Cinzel Decorative"', 'serif'],
         body: ['Inter', 'sans-serif'],
+      },
+      fontSize: {
+        'h1': ['3.5rem', { lineHeight: '1.15', fontWeight: '700' }],
+        'h2': ['2.5rem', { lineHeight: '1.2', fontWeight: '600' }],
+        'h3': ['1.75rem', { lineHeight: '1.3', fontWeight: '600' }],
+        'body': ['1rem', { lineHeight: '1.6', fontWeight: '400' }],
+        'btn': ['1rem', { lineHeight: '1', fontWeight: '600' }],
+        'caption': ['0.875rem', { lineHeight: '1.4', fontWeight: '300' }],
       },
       colors: {
         border: "hsl(var(--border))",

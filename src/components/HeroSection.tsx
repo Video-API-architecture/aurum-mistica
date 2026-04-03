@@ -91,42 +91,44 @@ const HeroSection = () => {
 
       <StarField />
 
-      {/* Floating mystical icons */}
-      {floatingIcons.map((icon, i) => (
-        <motion.span
-          key={i}
-          className="absolute text-2xl md:text-3xl opacity-20 pointer-events-none select-none"
-          style={{
-            left: `${10 + i * 15}%`,
-            top: `${15 + (i % 3) * 25}%`,
-          }}
-          animate={{
-            y: [0, -25, 0],
-            x: [0, i % 2 === 0 ? 10 : -10, 0],
-            opacity: [0.1, 0.35, 0.1],
-            rotate: [0, i % 2 === 0 ? 15 : -15, 0],
-          }}
-          transition={{
-            duration: 5 + i * 0.5,
-            repeat: Infinity,
-            delay: i * 0.8,
-            ease: "easeInOut",
-          }}
-        >
-          {icon}
-        </motion.span>
-      ))}
+      {/* Floating mystical icons — clipped so transforms never widen the page */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        {floatingIcons.map((icon, i) => (
+          <motion.span
+            key={i}
+            className="absolute text-2xl md:text-3xl opacity-20 select-none"
+            style={{
+              left: `${10 + i * 15}%`,
+              top: `${15 + (i % 3) * 25}%`,
+            }}
+            animate={{
+              y: [0, -25, 0],
+              x: [0, i % 2 === 0 ? 10 : -10, 0],
+              opacity: [0.1, 0.35, 0.1],
+              rotate: [0, i % 2 === 0 ? 15 : -15, 0],
+            }}
+            transition={{
+              duration: 5 + i * 0.5,
+              repeat: Infinity,
+              delay: i * 0.8,
+              ease: "easeInOut",
+            }}
+          >
+            {icon}
+          </motion.span>
+        ))}
+      </div>
 
-      <div className="relative z-10 container mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
-        <div className="flex w-full min-w-0 flex-col lg:flex-row items-center gap-10 lg:gap-12 xl:gap-16">
+      <div className="relative z-10 box-border mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
+        <div className="grid w-full min-w-0 grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_min(16rem,32vw)] lg:gap-8 xl:grid-cols-[minmax(0,1fr)_20rem] xl:gap-12">
           <motion.div
-            className="min-w-0 flex-1 text-center lg:text-left"
+            className="min-w-0 text-center lg:text-left"
             variants={textVariants}
             initial="hidden"
             animate="visible"
           >
-            <motion.div className="inline-block mb-4" variants={childVariant}>
-              <span className="text-sm font-body tracking-[0.3em] uppercase text-primary/80">
+            <motion.div className="mb-4 max-w-full px-0.5" variants={childVariant}>
+              <span className="block break-words text-sm font-body uppercase text-primary/80 tracking-[0.12em] sm:tracking-[0.22em] md:tracking-[0.3em]">
                 ✦ Tarot & Consultas Espirituais ✦
               </span>
             </motion.div>
@@ -175,12 +177,12 @@ const HeroSection = () => {
 
           {/* Photo carousel */}
           <motion.div
-            className="mx-auto w-full max-w-64 min-w-0 shrink-0 md:max-w-72 lg:mx-0 lg:w-80 lg:max-w-none"
+            className="mx-auto w-full min-w-0 max-w-64 justify-self-center md:max-w-72 lg:mx-0 lg:w-full lg:max-w-none lg:justify-self-end"
             initial={{ opacity: 0, scale: 0.85, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border-2 border-primary/30 animate-glow-breathe">
+            <div className="relative aspect-[9/16] w-full max-w-full overflow-hidden rounded-2xl border-2 border-primary/30 shadow-2xl animate-glow-breathe">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={current}

@@ -2,26 +2,30 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Ana C.",
-    text: "Eu estava num momento muito difícil no meu relacionamento. Depois do adoçamento, as coisas começaram a mudar de uma forma que eu não esperava. Voltamos a nos entender.",
+    name: "Ana M.",
+    text: "Fiquei impressionada com a precisão da leitura. Cada carta fez sentido na minha vida atual. Me ajudou a tomar uma decisão que eu vinha adiando há meses.",
+    stars: 5,
   },
   {
-    name: "Marcos R.",
-    text: "Fiz o ritual de abertura de caminhos e em menos de um mês recebi uma proposta de emprego que eu já tinha desistido de buscar. Coincidência? Eu não acredito mais nisso.",
+    name: "João S.",
+    text: "A sessão ao vivo foi transformadora. As cartas trouxeram clareza sobre meu relacionamento e o que eu precisava mudar. Recomendo muito!",
+    stars: 5,
   },
   {
-    name: "Juliana M.",
-    text: "A proteção energética mudou completamente minha rotina. Eu me sentia drenada todos os dias. Hoje tenho energia, clareza e uma paz que não sentia há anos.",
+    name: "Carla R.",
+    text: "Já fiz várias consultas e sempre me surpreendo. A Aurum Mística tem um dom especial para canalizar as mensagens certas no momento certo.",
+    stars: 5,
   },
   {
-    name: "Carlos S.",
-    text: "O empoderamento foi transformador. Minha autoconfiança voltou, meus negócios melhoraram e as pessoas ao meu redor notaram a diferença.",
+    name: "Pedro L.",
+    text: "Estava passando por um momento difícil na carreira. A leitura me mostrou caminhos que eu não enxergava. Em poucas semanas, as coisas começaram a mudar.",
+    stars: 5,
   },
 ];
 
 const SocialProofSection = () => {
   return (
-    <section className="py-24 bg-gradient-dark">
+    <section id="depoimentos" className="py-24 bg-gradient-dark">
       <div className="container mx-auto px-6 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,10 +33,10 @@ const SocialProofSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-display font-semibold mb-4">
-            O que <span className="text-gradient-gold">dizem</span> sobre os atendimentos
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+            O Que Dizem <span className="text-gradient-gold">Nossos Clientes</span>
           </h2>
-          <p className="text-muted-foreground font-light">Depoimentos reais de pessoas que passaram pela transformação</p>
+          <p className="text-muted-foreground font-light">Depoimentos reais de quem já transformou seu caminho</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -43,10 +47,15 @@ const SocialProofSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-2xl bg-card border border-border/50 relative"
+              className="card-mystical p-8 relative hover:glow-gold transition-shadow duration-500"
             >
-              <span className="text-primary/30 text-6xl font-display absolute top-4 left-6">"</span>
-              <p className="text-foreground/85 font-light leading-relaxed mb-6 relative z-10 pt-6">
+              <div className="flex gap-1 mb-4">
+                {Array.from({ length: t.stars }).map((_, j) => (
+                  <span key={j} className="text-primary text-lg">★</span>
+                ))}
+              </div>
+              <span className="text-primary/20 text-6xl font-display absolute top-4 right-6">"</span>
+              <p className="text-foreground/85 font-light leading-relaxed mb-6 relative z-10">
                 {t.text}
               </p>
               <div className="flex items-center gap-3">

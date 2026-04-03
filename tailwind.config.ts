@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
-        body: ['Raleway', 'sans-serif'],
+        display: ['Cinzel', '"Cormorant Garamond"', 'serif'],
+        body: ['Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,6 +57,11 @@ export default {
         },
         cream: "hsl(var(--cream))",
         smoke: "hsl(var(--smoke))",
+        purple: {
+          deep: "hsl(var(--purple-deep))",
+          mid: "hsl(var(--purple-mid))",
+          light: "hsl(var(--purple-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -87,8 +92,12 @@ export default {
           "50%": { transform: "translateY(-10px)" },
         },
         "pulse-gold": {
-          "0%, 100%": { boxShadow: "0 0 20px -5px hsl(40 80% 55% / 0.3)" },
-          "50%": { boxShadow: "0 0 40px -5px hsl(40 80% 55% / 0.5)" },
+          "0%, 100%": { boxShadow: "0 0 20px -5px hsl(43 80% 52% / 0.3)" },
+          "50%": { boxShadow: "0 0 40px -5px hsl(43 80% 52% / 0.5)" },
+        },
+        "twinkle": {
+          "0%, 100%": { opacity: "0.2", transform: "scale(0.8)" },
+          "50%": { opacity: "1", transform: "scale(1.2)" },
         },
       },
       animation: {
@@ -96,6 +105,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
         "pulse-gold": "pulse-gold 3s ease-in-out infinite",
+        "twinkle": "twinkle 4s ease-in-out infinite",
       },
     },
   },

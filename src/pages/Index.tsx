@@ -1,27 +1,27 @@
+import StickyHeader from "@/components/StickyHeader";
 import HeroSection from "@/components/HeroSection";
-import PainSection from "@/components/PainSection";
-import SolutionSection from "@/components/SolutionSection";
+import ServicesSection from "@/components/ServicesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
-import RitualsSection from "@/components/RitualsSection";
+import AboutSection from "@/components/AboutSection";
 import SocialProofSection from "@/components/SocialProofSection";
-import ResultsSection from "@/components/ResultsSection";
-import ForWhoSection from "@/components/ForWhoSection";
+import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import FooterSection from "@/components/FooterSection";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
+      <StickyHeader />
       <HeroSection />
-      <PainSection />
-      <SolutionSection />
+      <ServicesSection />
       <HowItWorksSection />
-      <RitualsSection />
+      <AboutSection />
       <SocialProofSection />
-      <ResultsSection />
-      <ForWhoSection />
+      <FAQSection />
       <FinalCTASection />
       <FooterSection />
+      <FloatingWhatsApp />
     </main>
   );
 };

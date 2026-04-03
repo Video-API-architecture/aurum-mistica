@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 
 const steps = [
-  { icon: "💫", title: "Atendimento personalizado", desc: "Conversa individual para entender sua situação" },
-  { icon: "🔍", title: "Análise energética", desc: "Leitura profunda do seu campo espiritual" },
-  { icon: "🔮", title: "Indicação do ritual ideal", desc: "O melhor caminho para o seu momento" },
-  { icon: "⚡", title: "Execução + orientação", desc: "Ritual realizado com acompanhamento completo" },
+  { icon: "📱", title: "Escolha seu Serviço", desc: "Selecione a consulta ideal para você" },
+  { icon: "💬", title: "Entre em Contato", desc: "Envie sua pergunta via WhatsApp" },
+  { icon: "🔮", title: "Receba sua Leitura", desc: "Áudio, vídeo ou chamada ao vivo" },
+  { icon: "✨", title: "Transforme seu Caminho", desc: "Orientação espiritual personalizada" },
 ];
 
 const HowItWorksSection = () => {
   return (
-    <section className="py-24 bg-gradient-dark">
+    <section id="como-funciona" className="py-24 bg-gradient-dark">
       <div className="container mx-auto px-6 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,8 +17,8 @@ const HowItWorksSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-display font-semibold">
-            Como <span className="text-gradient-gold">funciona</span>
+          <h2 className="text-3xl md:text-5xl font-display font-bold">
+            Como <span className="text-gradient-gold">Funciona</span>
           </h2>
         </motion.div>
 

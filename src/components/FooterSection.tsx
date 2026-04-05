@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
 
 const FooterSection = () => {
+  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
+
   return (
     <footer className="py-16 relative">
       {/* Animated gradient divider */}
@@ -47,9 +50,9 @@ const FooterSection = () => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-4">Contato</h4>
             <div className="space-y-3">
               <a
-                href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={whatsappHref}
+                target={whatsappExternal ? "_blank" : undefined}
+                rel={whatsappExternal ? "noopener noreferrer" : undefined}
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 text-sm group"
               >
                 <span className="group-hover:scale-110 transition-transform duration-300">📲</span> WhatsApp

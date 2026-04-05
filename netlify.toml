@@ -2,6 +2,12 @@
   command = "npm run build"
   publish = "dist"
 
+# Client-side routes (e.g. /whatsapp) must serve index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 # Helps crawlers parse robots.txt reliably (some tools are picky about Content-Type).
 [[headers]]
   for = "/robots.txt"

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
 
 const previsoes = [
   { icon: "📅", title: "Previsão Diária", price: "R$15" },
@@ -13,12 +14,12 @@ const consultasEspecificas = [
 ];
 
 const leituras = [
-  { icon: "🎴", title: "1 pergunta – 5 cartas (5 baralhos)", price: "R$30" },
-  { icon: "👑", title: "1 pergunta – Mesa Real (1 baralho)", price: "R$70" },
-  { icon: "🃏", title: "1 pergunta – 2 baralhos", price: "R$85" },
-  { icon: "🔮", title: "1 pergunta – 3 baralhos", price: "R$100" },
-  { icon: "✨", title: "1 pergunta – até 5 baralhos", price: "R$130" },
-  { icon: "🌟", title: "1 pergunta – até 8 baralhos", price: "R$150" },
+  { icon: "🎴", title: "1 pergunta - 5 cartas (5 baralhos)", price: "R$30" },
+  { icon: "👑", title: "1 pergunta - Mesa Real (1 baralho)", price: "R$70" },
+  { icon: "🃏", title: "1 pergunta - 2 baralhos", price: "R$85" },
+  { icon: "🔮", title: "1 pergunta - 3 baralhos", price: "R$100" },
+  { icon: "✨", title: "1 pergunta - até 5 baralhos", price: "R$130" },
+  { icon: "🌟", title: "1 pergunta - até 8 baralhos", price: "R$150" },
 ];
 
 const sessoes = [
@@ -72,6 +73,8 @@ const sectionHeaderVariants = {
 };
 
 const ServicesSection = () => {
+  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
+
   return (
     <section id="servicos" className="py-24 bg-gradient-cosmic">
       <div className="container mx-auto px-6 max-w-6xl">
@@ -248,9 +251,9 @@ const ServicesSection = () => {
                   ))}
                 </ul>
                 <motion.a
-                  href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={whatsappHref}
+                  target={whatsappExternal ? "_blank" : undefined}
+                  rel={whatsappExternal ? "noopener noreferrer" : undefined}
                   className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg hover:scale-105 transition-transform duration-300 text-sm tracking-wide"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}

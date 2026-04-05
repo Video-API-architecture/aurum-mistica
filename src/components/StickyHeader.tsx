@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
 
 const StickyHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -52,9 +54,9 @@ const StickyHeader = () => {
             </motion.a>
           ))}
           <motion.a
-            href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={whatsappHref}
+            target={whatsappExternal ? "_blank" : undefined}
+            rel={whatsappExternal ? "noopener noreferrer" : undefined}
             className="shimmer bg-gradient-gold text-primary-foreground text-sm font-semibold px-5 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,9 +100,9 @@ const StickyHeader = () => {
                 </motion.a>
               ))}
               <motion.a
-                href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={whatsappHref}
+                target={whatsappExternal ? "_blank" : undefined}
+                rel={whatsappExternal ? "noopener noreferrer" : undefined}
                 className="shimmer bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg mt-2"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

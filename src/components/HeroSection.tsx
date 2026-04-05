@@ -5,6 +5,7 @@ import aurum1 from "@/assets/aurum-1.jpeg";
 import aurum2 from "@/assets/aurum-2.jpeg";
 import aurum3 from "@/assets/aurum-3.jpeg";
 import { AnimatePresence } from "framer-motion";
+import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
 
 const images = [aurum1, aurum2, aurum3];
 
@@ -64,6 +65,7 @@ const childVariant = {
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
+  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -163,9 +165,9 @@ const HeroSection = () => {
 
             <motion.div variants={childVariant}>
               <motion.a
-                href="https://api.whatsapp.com/send/?phone=5521967622489&text&type=phone_number&app_absent=0"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={whatsappHref}
+                target={whatsappExternal ? "_blank" : undefined}
+                rel={whatsappExternal ? "noopener noreferrer" : undefined}
                 className="shimmer inline-block max-w-full bg-gradient-gold text-primary-foreground font-semibold text-base sm:text-lg px-6 sm:px-10 py-4 rounded-lg shadow-gold hover:scale-105 transition-transform duration-300 animate-pulse-gold tracking-wide text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}

@@ -3,25 +3,29 @@ import { motion } from "framer-motion";
 const testimonials = [
   {
     name: "Ana M.",
+    avatarSrc: "/testimonials/ana-m.jpg",
     text: "Fiquei impressionada com a precisão da leitura. Cada carta fez sentido na minha vida atual. Me ajudou a tomar uma decisão que eu vinha adiando há meses.",
     stars: 5,
   },
   {
     name: "João S.",
+    avatarSrc: "/testimonials/joao-m.jpg",
     text: "A sessão ao vivo foi transformadora. As cartas trouxeram clareza sobre meu relacionamento e o que eu precisava mudar. Recomendo muito!",
     stars: 5,
   },
   {
     name: "Carla R.",
+    avatarSrc: "/testimonials/carla-r.jpg",
     text: "Já fiz várias consultas e sempre me surpreendo. A Aurum Mística tem um dom especial para canalizar as mensagens certas no momento certo.",
     stars: 5,
   },
   {
     name: "Pedro L.",
+    avatarSrc: "/testimonials/pedro-l.jpg",
     text: "Estava passando por um momento difícil na carreira. A leitura me mostrou caminhos que eu não enxergava. Em poucas semanas, as coisas começaram a mudar.",
     stars: 5,
   },
-];
+] as const;
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -94,10 +98,18 @@ const SocialProofSection = () => {
               </p>
               <div className="flex items-center gap-3">
                 <motion.div
-                  className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-display font-bold border border-primary/30"
-                  whileHover={{ scale: 1.1, borderColor: "hsl(43 80% 52% / 0.6)" }}
+                  className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-primary/30 bg-primary/10 ring-2 ring-primary/10"
+                  whileHover={{ scale: 1.08, borderColor: "hsl(43 80% 52% / 0.6)" }}
                 >
-                  {t.name[0]}
+                  <img
+                    src={t.avatarSrc}
+                    alt=""
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
                 </motion.div>
                 <span className="text-sm text-muted-foreground font-medium">{t.name}</span>
               </div>

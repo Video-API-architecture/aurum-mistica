@@ -77,7 +77,7 @@ const FinalCTASection = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             <WhatsAppMotionCta
-              useInAppHelper
+              toWhatsAppPage
               className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold text-lg px-12 py-5 rounded-lg shadow-gold hover:scale-105 transition-transform duration-300 animate-pulse-gold tracking-wide"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}

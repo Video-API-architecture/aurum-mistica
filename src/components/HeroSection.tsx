@@ -164,7 +164,7 @@ const HeroSection = () => {
 
             <motion.div variants={childVariant}>
               <WhatsAppMotionCta
-                useInAppHelper
+                toWhatsAppPage
                 className="shimmer inline-block max-w-full bg-gradient-gold text-primary-foreground font-semibold text-base sm:text-lg px-6 sm:px-10 py-4 rounded-lg shadow-gold hover:scale-105 transition-transform duration-300 animate-pulse-gold tracking-wide text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}

@@ -1,50 +1,46 @@
 import { motion, type HTMLMotionProps } from "framer-motion";
+import { Link } from "react-router-dom";
+import { WHATSAPP_CHAT_PATH } from "@/constants/whatsapp";
 import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
+
+const MotionLink = motion(Link);
 
 type Props = {
   children: React.ReactNode;
   className?: string;
-  /**
-   * Set on the few primary CTAs only; in TikTok/IG in-app browsers those open the helper modal (same content as /whatsapp).
-   */
-  useInAppHelper?: boolean;
-  /** Runs on tap (e.g. close a mobile menu); receives the same event as Framer motion handlers. */
+  /** Client-side navigation to `/whatsapp` (same-origin; works in TikTok in-app browser). */
+  toWhatsAppPage?: boolean;
+  /** Runs on tap (e.g. close a mobile menu). */
   onClick?: (event: React.MouseEvent) => void;
 } & Omit<HTMLMotionProps<"a">, "href" | "target" | "rel" | "onClick">;
 
-/**
- * WhatsApp CTA: opens wa.me. With `useInAppHelper`, TikTok/Instagram in-app browsers show the helper modal instead of navigating away.
- */
-const WhatsAppMotionCta = ({ children, className, useInAppHelper, onClick, ...motionProps }: Props) => {
-  const wa = useWhatsAppCtaLink({ useInAppHelper });
-
-  if ("href" in wa) {
+const WhatsAppMotionCta = ({ children, className, toWhatsAppPage, onClick, ...motionProps }: Props) => {
+  if (toWhatsAppPage) {
     return (
-      <motion.a
-        href={wa.href}
-        target="_blank"
-        rel="noopener noreferrer"
+      <MotionLink
+        to={WHATSAPP_CHAT_PATH}
         className={className}
         onClick={onClick}
-        {...motionProps}
+        {...(motionProps as React.ComponentProps<typeof MotionLink>)}
       >
         {children}
-      </motion.a>
+      </MotionLink>
     );
   }
 
+  const { href } = useWhatsAppCtaLink();
+
   return (
-    <motion.button
-      type="button"
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className={className}
-      onClick={(e) => {
-        onClick?.(e);
-        wa.openWhatsAppHelper();
-      }}
-      {...(motionProps as unknown as HTMLMotionProps<"button">)}
+      onClick={onClick}
+      {...motionProps}
     >
       {children}
-    </motion.button>
+    </motion.a>
   );
 };
 

@@ -6,7 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import WhatsAppChatPage from "./pages/WhatsAppChatPage.tsx";
-import { WhatsAppInAppModalProvider } from "@/components/WhatsAppInAppModalProvider";
 
 const queryClient = new QueryClient();
 
@@ -16,14 +15,12 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <WhatsAppInAppModalProvider>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/whatsapp" element={<WhatsAppChatPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        </WhatsAppInAppModalProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

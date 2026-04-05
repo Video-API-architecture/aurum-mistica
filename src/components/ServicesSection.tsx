@@ -249,6 +249,7 @@ const ServicesSection = () => {
                   ))}
                 </ul>
                 <WhatsAppMotionCta
+                  toWhatsAppPage
                   className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg hover:scale-105 transition-transform duration-300 text-sm tracking-wide"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}

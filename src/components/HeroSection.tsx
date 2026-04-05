@@ -1,49 +1,16 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import cosmicBg from "@/assets/cosmic-bg.jpg";
 import aurum1 from "@/assets/aurum-1.jpeg";
 import aurum2 from "@/assets/aurum-2.jpeg";
 import aurum3 from "@/assets/aurum-3.jpeg";
 import { AnimatePresence } from "framer-motion";
 import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
+import StarField from "@/components/StarField";
 
 const images = [aurum1, aurum2, aurum3];
 
 const floatingIcons = ["🌙", "⭐", "🔮", "✨", "🌟", "☽"];
-
-const StarField = () => {
-  const stars = useMemo(
-    () =>
-      Array.from({ length: 40 }, (_, i) => ({
-        id: i,
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        size: Math.random() * 2 + 1,
-        duration: Math.random() * 4 + 3,
-        delay: Math.random() * 5,
-      })),
-    []
-  );
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {stars.map((star) => (
-        <div
-          key={star.id}
-          className="star-particle"
-          style={{
-            left: star.left,
-            top: star.top,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            "--duration": `${star.duration}s`,
-            "--delay": `${star.delay}s`,
-          } as React.CSSProperties}
-        />
-      ))}
-    </div>
-  );
-};
 
 const textVariants = {
   hidden: { opacity: 0 },

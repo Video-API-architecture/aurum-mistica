@@ -1,15 +1,9 @@
-import { motion } from "framer-motion";
-import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
+import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 
 const FloatingWhatsApp = () => {
-  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
-
   return (
     <div className="pointer-events-none fixed bottom-6 right-6 z-50 flex items-end justify-end">
-      <motion.a
-        href={whatsappHref}
-        target={whatsappExternal ? "_blank" : undefined}
-        rel={whatsappExternal ? "noopener noreferrer" : undefined}
+      <WhatsAppMotionCta
         className="pointer-events-auto pulse-ring flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(142_70%_45%)] shadow-lg transition-transform duration-300 hover:scale-110"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -19,7 +13,7 @@ const FloatingWhatsApp = () => {
         title="Fale conosco no WhatsApp"
       >
         <span className="text-2xl">💬</span>
-      </motion.a>
+      </WhatsAppMotionCta>
     </div>
   );
 };

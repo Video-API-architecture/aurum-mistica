@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
+import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 
 const StickyHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
-
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -53,17 +51,14 @@ const StickyHeader = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
             </motion.a>
           ))}
-          <motion.a
-            href={whatsappHref}
-            target={whatsappExternal ? "_blank" : undefined}
-            rel={whatsappExternal ? "noopener noreferrer" : undefined}
+          <WhatsAppMotionCta
             className="shimmer bg-gradient-gold text-primary-foreground text-sm font-semibold px-5 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.4 }}
           >
             Consultar Agora
-          </motion.a>
+          </WhatsAppMotionCta>
         </nav>
 
         {/* Mobile hamburger */}
@@ -99,17 +94,15 @@ const StickyHeader = () => {
                   {link.label}
                 </motion.a>
               ))}
-              <motion.a
-                href={whatsappHref}
-                target={whatsappExternal ? "_blank" : undefined}
-                rel={whatsappExternal ? "noopener noreferrer" : undefined}
+              <WhatsAppMotionCta
                 className="shimmer bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg mt-2"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25, duration: 0.3 }}
+                onClick={() => setMenuOpen(false)}
               >
                 Consultar Agora
-              </motion.a>
+              </WhatsAppMotionCta>
             </nav>
           </motion.div>
         )}

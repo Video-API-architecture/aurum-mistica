@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
 import { useMemo } from "react";
-import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
+import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 
 const FinalCTASection = () => {
-  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
-
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, (_, i) => ({
@@ -78,16 +76,13 @@ const FinalCTASection = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <motion.a
-              href={whatsappHref}
-              target={whatsappExternal ? "_blank" : undefined}
-              rel={whatsappExternal ? "noopener noreferrer" : undefined}
+            <WhatsAppMotionCta
               className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold text-lg px-12 py-5 rounded-lg shadow-gold hover:scale-105 transition-transform duration-300 animate-pulse-gold tracking-wide"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
               FALE COM AURUM MÍSTICA
-            </motion.a>
+            </WhatsAppMotionCta>
             <motion.a
               href="#servicos"
               className="inline-block border-2 border-primary/50 text-primary font-semibold text-lg px-10 py-5 rounded-lg hover:bg-primary/10 hover:border-primary/70 transition-all duration-300 tracking-wide"

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
+import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 
 const previsoes = [
   { icon: "📅", title: "Previsão Diária", price: "R$15" },
@@ -73,8 +73,6 @@ const sectionHeaderVariants = {
 };
 
 const ServicesSection = () => {
-  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
-
   return (
     <section id="servicos" className="py-24 bg-gradient-cosmic">
       <div className="container mx-auto px-6 max-w-6xl">
@@ -250,16 +248,13 @@ const ServicesSection = () => {
                     </li>
                   ))}
                 </ul>
-                <motion.a
-                  href={whatsappHref}
-                  target={whatsappExternal ? "_blank" : undefined}
-                  rel={whatsappExternal ? "noopener noreferrer" : undefined}
+                <WhatsAppMotionCta
                   className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg hover:scale-105 transition-transform duration-300 text-sm tracking-wide"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
                 >
                   AGENDAR
-                </motion.a>
+                </WhatsAppMotionCta>
               </motion.div>
             ))}
           </div>

@@ -5,7 +5,7 @@ import aurum1 from "@/assets/aurum-1.jpeg";
 import aurum2 from "@/assets/aurum-2.jpeg";
 import aurum3 from "@/assets/aurum-3.jpeg";
 import { AnimatePresence } from "framer-motion";
-import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
+import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 
 const images = [aurum1, aurum2, aurum3];
 
@@ -65,7 +65,6 @@ const childVariant = {
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
-  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -164,16 +163,13 @@ const HeroSection = () => {
             </motion.p>
 
             <motion.div variants={childVariant}>
-              <motion.a
-                href={whatsappHref}
-                target={whatsappExternal ? "_blank" : undefined}
-                rel={whatsappExternal ? "noopener noreferrer" : undefined}
+              <WhatsAppMotionCta
                 className="shimmer inline-block max-w-full bg-gradient-gold text-primary-foreground font-semibold text-base sm:text-lg px-6 sm:px-10 py-4 rounded-lg shadow-gold hover:scale-105 transition-transform duration-300 animate-pulse-gold tracking-wide text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
                 AGENDE SUA CONSULTA
-              </motion.a>
+              </WhatsAppMotionCta>
             </motion.div>
           </motion.div>
 

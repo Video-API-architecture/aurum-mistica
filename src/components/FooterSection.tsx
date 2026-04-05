@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
+import WhatsAppPlainCta from "@/components/WhatsAppPlainCta";
 
 const FooterSection = () => {
-  const { href: whatsappHref, external: whatsappExternal } = useWhatsAppCtaLink();
-
   return (
     <footer className="py-16 relative">
       {/* Animated gradient divider */}
@@ -49,14 +47,9 @@ const FooterSection = () => {
           <div>
             <h4 className="font-display text-lg font-semibold text-foreground mb-4">Contato</h4>
             <div className="space-y-3">
-              <a
-                href={whatsappHref}
-                target={whatsappExternal ? "_blank" : undefined}
-                rel={whatsappExternal ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 text-sm group"
-              >
+              <WhatsAppPlainCta className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 text-sm group text-left">
                 <span className="group-hover:scale-110 transition-transform duration-300">📲</span> WhatsApp
-              </a>
+              </WhatsAppPlainCta>
               <a
                 href="https://www.tiktok.com/@aurummisticaoficial"
                 target="_blank"

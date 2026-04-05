@@ -4,15 +4,19 @@ import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
 type Props = {
   children: React.ReactNode;
   className?: string;
+  /**
+   * Set on the few primary CTAs only; in TikTok/IG in-app browsers those open the helper modal (same content as /whatsapp).
+   */
+  useInAppHelper?: boolean;
   /** Runs on tap (e.g. close a mobile menu); receives the same event as Framer motion handlers. */
   onClick?: (event: React.MouseEvent) => void;
 } & Omit<HTMLMotionProps<"a">, "href" | "target" | "rel" | "onClick">;
 
 /**
- * WhatsApp CTA: opens wa.me in a normal browser; in TikTok/Instagram in-app browsers opens the helper modal instead of navigating away from the landing page.
+ * WhatsApp CTA: opens wa.me. With `useInAppHelper`, TikTok/Instagram in-app browsers show the helper modal instead of navigating away.
  */
-const WhatsAppMotionCta = ({ children, className, onClick, ...motionProps }: Props) => {
-  const wa = useWhatsAppCtaLink();
+const WhatsAppMotionCta = ({ children, className, useInAppHelper, onClick, ...motionProps }: Props) => {
+  const wa = useWhatsAppCtaLink({ useInAppHelper });
 
   if ("href" in wa) {
     return (

@@ -52,6 +52,7 @@ const StickyHeader = () => {
             </motion.a>
           ))}
           <WhatsAppMotionCta
+            useInAppHelper
             className="shimmer bg-gradient-gold text-primary-foreground text-sm font-semibold px-5 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -95,6 +96,7 @@ const StickyHeader = () => {
                 </motion.a>
               ))}
               <WhatsAppMotionCta
+                useInAppHelper
                 className="shimmer bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg mt-2"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

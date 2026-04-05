@@ -7,7 +7,10 @@ export const WHATSAPP_PHONE_E164 = "5521967622489" as const;
  */
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE_E164}` as const;
 
-/** Standalone route with the same copy + instructions as the in-app modal (bookmarks / direct links). */
+/**
+ * Same copy + instructions as the in-app modal. Primary CTAs (header, hero, final CTA) open that flow in TikTok/IG in-app browsers; other WhatsApp links use wa.me directly.
+ * Kept for bookmarks and direct /whatsapp links.
+ */
 export const WHATSAPP_CHAT_PATH = "/whatsapp" as const;
 
 /** Human-readable for UI (Brazil). */

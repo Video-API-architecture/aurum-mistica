@@ -3,26 +3,27 @@ import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
 type Props = {
   children: React.ReactNode;
   className?: string;
+  useInAppHelper?: boolean;
 };
 
 /**
  * Same behavior as {@link WhatsAppMotionCta} for non-motion anchor/footer links.
  */
-const WhatsAppPlainCta = ({ children, className }: Props) => {
-  const wa = useWhatsAppCtaLink();
+const WhatsAppPlainCta = ({ children, className, useInAppHelper }: Props) => {
+  const wa = useWhatsAppCtaLink({ useInAppHelper });
 
-  if (wa.isInAppSession) {
+  if ("href" in wa) {
     return (
-      <button type="button" onClick={wa.openWhatsAppHelper} className={className}>
+      <a href={wa.href} target="_blank" rel="noopener noreferrer" className={className}>
         {children}
-      </button>
+      </a>
     );
   }
 
   return (
-    <a href={wa.href} target="_blank" rel="noopener noreferrer" className={className}>
+    <button type="button" onClick={wa.openWhatsAppHelper} className={className}>
       {children}
-    </a>
+    </button>
   );
 };
 

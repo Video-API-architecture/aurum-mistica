@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const steps = [
-  { icon: "📱", title: "Escolha seu Serviço", desc: "Selecione a consulta ideal para você" },
-  { icon: "💬", title: "Entre em Contato", desc: "Envie sua pergunta via WhatsApp" },
-  { icon: "🔮", title: "Receba sua Leitura", desc: "Áudio, vídeo ou chamada ao vivo" },
-  { icon: "✨", title: "Transforme seu Caminho", desc: "Orientação espiritual personalizada" },
-];
+type Step = { icon: string; title: string; desc: string };
 
 const stepVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.9 },
@@ -22,6 +18,9 @@ const stepVariants = {
 };
 
 const HowItWorksSection = () => {
+  const { t } = useTranslation();
+  const steps = t("howItWorks.steps", { returnObjects: true }) as Step[];
+
   return (
     <section id="como-funciona" className="py-24 bg-gradient-dark">
       <div className="container mx-auto px-6 max-w-5xl">
@@ -33,12 +32,11 @@ const HowItWorksSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold">
-            Como <span className="text-shimmer-gold">Funciona</span>
+            {t("howItWorks.title")} <span className="text-shimmer-gold">{t("howItWorks.titleAccent")}</span>
           </h2>
         </motion.div>
 
         <div className="relative grid md:grid-cols-4 gap-8">
-          {/* Connecting line (desktop only) */}
           <motion.div
             className="hidden md:block absolute top-[4.5rem] left-[12.5%] right-[12.5%] h-px"
             initial={{ scaleX: 0 }}

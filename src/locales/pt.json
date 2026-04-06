@@ -1,0 +1,204 @@
+{
+  "lang": {
+    "pt": "Português",
+    "en": "English",
+    "es": "Español",
+    "label": "Idioma"
+  },
+  "nav": {
+    "services": "Serviços",
+    "howItWorks": "Como Funciona",
+    "about": "Sobre",
+    "testimonials": "Depoimentos",
+    "faq": "FAQ",
+    "consultNow": "Consultar Agora"
+  },
+  "hero": {
+    "kicker": "✦ Tarot & Consultas Espirituais ✦",
+    "tagline": "Desvende os Mistérios do Seu Caminho ✨🔮",
+    "line1": "Respostas em até 24 horas | Consultas por Áudio ou Vídeo",
+    "line2": "Leituras de tarot personalizadas para amor, carreira, propósito e autoconhecimento.",
+    "cta": "AGENDE SUA CONSULTA",
+    "cosmicAlt": "Cosmos místico",
+    "photoAlt": "Aurum Mística"
+  },
+  "howItWorks": {
+    "title": "Como",
+    "titleAccent": "Funciona",
+    "steps": [
+      {
+        "title": "Escolha seu Serviço",
+        "desc": "Selecione a consulta ideal para você",
+        "icon": "📱"
+      },
+      {
+        "icon": "💬",
+        "title": "Entre em Contato",
+        "desc": "Envie sua pergunta via WhatsApp"
+      },
+      {
+        "icon": "🔮",
+        "title": "Receba sua Leitura",
+        "desc": "Áudio, vídeo ou chamada ao vivo"
+      },
+      {
+        "icon": "✨",
+        "title": "Transforme seu Caminho",
+        "desc": "Orientação espiritual personalizada"
+      }
+    ]
+  },
+  "about": {
+    "title": "Sobre",
+    "titleAccent": "Aurum Mística",
+    "body": "Aurum Mística é um espaço de consultas espirituais autênticas, onde cada leitura é feita com dedicação, respeito e profundidade. Utilizamos métodos tradicionais de tarot e canalização para oferecer orientação clara e transformadora para o seu caminho.",
+    "quote": "O universo fala através das cartas. Cabe a nós ouvir com o coração aberto.",
+    "badges": [
+      {
+        "icon": "⏰",
+        "text": "Respostas em 24h"
+      },
+      {
+        "icon": "🔒",
+        "text": "100% Confidencial"
+      },
+      {
+        "icon": "📜",
+        "text": "Métodos Tradicionais"
+      }
+    ]
+  },
+  "socialProof": {
+    "title": "O Que Dizem",
+    "titleAccent": "Nossos Clientes",
+    "subtitle": "Depoimentos reais de quem já transformou seu caminho",
+    "items": [
+      {
+        "name": "Ana M.",
+        "text": "Fiquei impressionada com a precisão da leitura. Cada carta fez sentido na minha vida atual. Me ajudou a tomar uma decisão que eu vinha adiando há meses."
+      },
+      {
+        "name": "João S.",
+        "text": "A sessão ao vivo foi transformadora. As cartas trouxeram clareza sobre meu relacionamento e o que eu precisava mudar. Recomendo muito!"
+      },
+      {
+        "name": "Carla R.",
+        "text": "Já fiz várias consultas e sempre me surpreendo. A Aurum Mística tem um dom especial para canalizar as mensagens certas no momento certo."
+      },
+      {
+        "name": "Pedro L.",
+        "text": "Estava passando por um momento difícil na carreira. A leitura me mostrou caminhos que eu não enxergava. Em poucas semanas, as coisas começaram a mudar."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas",
+    "titleAccent": "Frequentes",
+    "items": [
+      {
+        "q": "Como funciona a consulta por áudio?",
+        "a": "Você envia sua pergunta via WhatsApp e recebe a resposta em áudio detalhado com a interpretação das cartas em até 24 horas."
+      },
+      {
+        "q": "Posso fazer perguntas sobre qualquer assunto?",
+        "a": "Sim! Amor, carreira, finanças, saúde espiritual, decisões importantes — as cartas trazem orientação para qualquer área da sua vida."
+      },
+      {
+        "q": "Qual a diferença entre os baralhos?",
+        "a": "Cada baralho traz uma perspectiva diferente. Quanto mais baralhos utilizados, mais camadas e detalhes a leitura revela sobre sua situação."
+      },
+      {
+        "q": "Quanto tempo leva para receber minha resposta?",
+        "a": "As consultas por áudio são entregues em até 24 horas. Sessões ao vivo são agendadas conforme disponibilidade."
+      },
+      {
+        "q": "As consultas são confidenciais?",
+        "a": "Sim, 100%. Todas as informações compartilhadas são tratadas com total sigilo e respeito."
+      },
+      {
+        "q": "Quais formas de pagamento aceita?",
+        "a": "Aceitamos Pix, transferência bancária e cartões de crédito."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Pronto para Descobrir",
+    "titleAccent": "seu Caminho?",
+    "body": "Sua transformação começa com uma pergunta. As cartas já têm a resposta.",
+    "whatsapp": "FALE COM AURUM MÍSTICA",
+    "services": "VER SERVIÇOS"
+  },
+  "footer": {
+    "tagline": "Desvende os mistérios do seu caminho ✨",
+    "quickLinks": "Links Rápidos",
+    "contact": "Contato",
+    "links": {
+      "services": "Serviços",
+      "about": "Sobre",
+      "faq": "FAQ",
+      "contact": "Contato"
+    },
+    "disclaimer": "Os atendimentos possuem caráter espiritual e energético, não substituindo tratamentos médicos, psicológicos ou financeiros.",
+    "rights": "© {{year}} Aurum Mística. Todos os direitos reservados."
+  },
+  "servicesSection": {
+    "title": "Nossos",
+    "titleAccent": "Serviços",
+    "subtitle": "Escolha a consulta ideal para o seu momento",
+    "avulsasTitle": "🎴 Perguntas Avulsas",
+    "avulsasNote": "Respostas por áudio • ✅ Prazo de entrega: até 24 horas",
+    "liveTitle": "🔮 Sessões Ao Vivo",
+    "liveNote": "Perguntas ilimitadas • Consulta em tempo real",
+    "learnMore": "Saber Mais",
+    "request": "Solicitar",
+    "requestForecast": "Solicitar Previsão",
+    "requestConsult": "Solicitar Consulta",
+    "requestReading": "Solicitar Leitura",
+    "mostPopular": "MAIS POPULAR"
+  },
+  "servicePage": {
+    "back": "Voltar aos Serviços",
+    "aboutTitle": "Sobre este Serviço",
+    "forWhom": "✦ Para quem é",
+    "receivesTitle": "O que você recebe",
+    "durationLabel": "Duração:",
+    "ctaTitle": "Pronto para começar?",
+    "availableFor": "{{title}} disponível por",
+    "requestNow": "SOLICITAR AGORA",
+    "viewAll": "VER TODOS OS SERVIÇOS",
+    "seeAlso": "Veja também",
+    "notFoundTitle": "Serviço não encontrado",
+    "notFoundBody": "O serviço que você procura não existe ou foi movido.",
+    "notFoundCta": "Ver todos os serviços"
+  },
+  "whatsappPage": {
+    "back": "← Voltar ao início",
+    "title": "Fale com a Aurum Mística no WhatsApp",
+    "body": "No app do TikTok ou Instagram, o link direto pode ser bloqueado. Use o número abaixo ou abra o site no Chrome ou Safari."
+  },
+  "whatsappHelper": {
+    "copied": "Número copiado! Cole no WhatsApp.",
+    "copyError": "Não foi possível copiar. Anote o número na tela.",
+    "copyBtn": "Copiar número com DDI",
+    "tiktokTitle": "Como abrir no WhatsApp a partir do TikTok",
+    "tiktokStep1": "Toque em <strong>⋯</strong> (três pontos) no canto da tela.",
+    "tiktokStep2": "Escolha <strong>Abrir no navegador</strong> (Chrome ou Safari).",
+    "tiktokStep3": "Volte ao site e use o botão <strong>Abrir WhatsApp</strong> abaixo, ou cole o número que você copiou.",
+    "openLink": "Abrir WhatsApp (funciona melhor no navegador externo)"
+  },
+  "floatingWhatsapp": {
+    "title": "Fale conosco no WhatsApp"
+  },
+  "notFound": {
+    "title": "404",
+    "body": "Página não encontrada",
+    "home": "Voltar ao início"
+  },
+  "meta": {
+    "homeTitle": "Aurum Mística | Consultas de Tarot e Orientação Espiritual",
+    "homeDesc": "Consultas de tarot e orientação espiritual com leituras personalizadas.",
+    "whatsappTitle": "WhatsApp | Aurum Mística",
+    "serviceTitle": "{{title}} | Aurum Mística",
+    "notFoundTitle": "Página não encontrada | Aurum Mística"
+  }
+}

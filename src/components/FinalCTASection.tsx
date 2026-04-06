@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 
 const FinalCTASection = () => {
+  const { t } = useTranslation();
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }, (_, i) => ({
@@ -57,7 +59,7 @@ const FinalCTASection = () => {
             🔮
           </motion.span>
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-            Pronto para Descobrir <span className="text-shimmer-gold">seu Caminho?</span>
+            {t("finalCta.title")} <span className="text-shimmer-gold">{t("finalCta.titleAccent")}</span>
           </h2>
           <motion.p
             className="text-xl text-muted-foreground font-light mb-10"
@@ -66,7 +68,7 @@ const FinalCTASection = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Sua transformação começa com uma pergunta. As cartas já têm a resposta.
+            {t("finalCta.body")}
           </motion.p>
 
           <motion.div
@@ -82,7 +84,7 @@ const FinalCTASection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              FALE COM AURUM MÍSTICA
+              {t("finalCta.whatsapp")}
             </WhatsAppMotionCta>
             <motion.a
               href="#servicos"
@@ -90,7 +92,7 @@ const FinalCTASection = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              VER SERVIÇOS
+              {t("finalCta.services")}
             </motion.a>
           </motion.div>
         </motion.div>

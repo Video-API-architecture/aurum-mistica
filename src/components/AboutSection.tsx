@@ -1,10 +1,7 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const trustBadges = [
-  { icon: "⏰", text: "Respostas em 24h" },
-  { icon: "🔒", text: "100% Confidencial" },
-  { icon: "📜", text: "Métodos Tradicionais" },
-];
+type Badge = { icon: string; text: string };
 
 const badgeVariants = {
   hidden: { opacity: 0, y: 20, scale: 0.9 },
@@ -21,11 +18,13 @@ const badgeVariants = {
 };
 
 const AboutSection = () => {
+  const { t } = useTranslation();
+  const trustBadges = t("about.badges", { returnObjects: true }) as Badge[];
+
   return (
     <section id="sobre" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
 
-      {/* Subtle decorative orb */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/[0.02] blur-3xl pointer-events-none" />
 
       <div className="relative container mx-auto px-6 max-w-4xl">
@@ -37,7 +36,7 @@ const AboutSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-            Sobre <span className="text-shimmer-gold">Aurum Mística</span>
+            {t("about.title")} <span className="text-shimmer-gold">{t("about.titleAccent")}</span>
           </h2>
           <motion.p
             className="text-lg text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto mb-8"
@@ -46,9 +45,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Aurum Mística é um espaço de consultas espirituais autênticas, onde cada leitura é feita com
-            dedicação, respeito e profundidade. Utilizamos métodos tradicionais de tarot e canalização para
-            oferecer orientação clara e transformadora para o seu caminho.
+            {t("about.body")}
           </motion.p>
 
           <motion.div
@@ -59,11 +56,10 @@ const AboutSection = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             whileHover={{ scale: 1.02 }}
           >
-            {/* Decorative quote marks */}
             <span className="absolute top-2 left-4 text-primary/10 text-7xl font-display leading-none select-none">"</span>
             <span className="absolute bottom-0 right-4 text-primary/10 text-7xl font-display leading-none select-none">"</span>
             <p className="text-foreground font-display text-xl italic relative z-10 leading-relaxed">
-              O universo fala através das cartas. Cabe a nós ouvir com o coração aberto.
+              {t("about.quote")}
             </p>
           </motion.div>
         </motion.div>

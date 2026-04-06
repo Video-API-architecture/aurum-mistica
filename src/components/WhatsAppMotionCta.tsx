@@ -2,6 +2,8 @@ import { motion, type HTMLMotionProps } from "framer-motion";
 import { Link } from "react-router-dom";
 import { WHATSAPP_CHAT_PATH } from "@/constants/whatsapp";
 import { useWhatsAppCtaLink } from "@/hooks/useWhatsAppCtaLink";
+import { useOptionalLocale } from "@/contexts/LocaleContext";
+import { localizedPath } from "@/lib/locale";
 
 const MotionLink = motion(Link);
 
@@ -15,10 +17,13 @@ type Props = {
 } & Omit<HTMLMotionProps<"a">, "href" | "target" | "rel" | "onClick">;
 
 const WhatsAppMotionCta = ({ children, className, toWhatsAppPage, onClick, ...motionProps }: Props) => {
+  const localeCtx = useOptionalLocale();
+  const prefix = localeCtx?.prefix ?? "";
+
   if (toWhatsAppPage) {
     return (
       <MotionLink
-        to={WHATSAPP_CHAT_PATH}
+        to={localizedPath(prefix, WHATSAPP_CHAT_PATH)}
         className={className}
         onClick={onClick}
         {...(motionProps as React.ComponentProps<typeof MotionLink>)}

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import cosmicBg from "@/assets/cosmic-bg.jpg";
 import aurum1 from "@/assets/aurum-1.jpeg";
 import aurum2 from "@/assets/aurum-2.jpeg";
@@ -31,6 +32,7 @@ const childVariant = {
 };
 
 const HeroSection = () => {
+  const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -48,7 +50,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img
           src={cosmicBg}
-          alt="Cosmos místico"
+          alt={t("hero.cosmicAlt")}
           className="w-full h-full object-cover"
           width={1920}
           height={1080}
@@ -97,7 +99,7 @@ const HeroSection = () => {
           >
             <motion.div className="mb-4 max-w-full px-0.5" variants={childVariant}>
               <span className="block break-words text-sm font-body uppercase text-primary/80 tracking-[0.12em] sm:tracking-[0.22em] md:tracking-[0.3em]">
-                ✦ Tarot & Consultas Espirituais ✦
+                {t("hero.kicker")}
               </span>
             </motion.div>
 
@@ -112,21 +114,21 @@ const HeroSection = () => {
               className="text-2xl md:text-3xl font-display font-medium text-foreground/90 mb-6 break-words"
               variants={childVariant}
             >
-              Desvende os Mistérios do Seu Caminho ✨🔮
+              {t("hero.tagline")}
             </motion.p>
 
             <motion.p
               className="text-base md:text-lg text-muted-foreground font-light max-w-xl mx-auto lg:mx-0 mb-3"
               variants={childVariant}
             >
-              Respostas em até 24 horas | Consultas por Áudio ou Vídeo
+              {t("hero.line1")}
             </motion.p>
 
             <motion.p
               className="text-base text-muted-foreground font-light max-w-xl mx-auto lg:mx-0 mb-10"
               variants={childVariant}
             >
-              Leituras de tarot personalizadas para amor, carreira, propósito e autoconhecimento.
+              {t("hero.line2")}
             </motion.p>
 
             <motion.div variants={childVariant}>
@@ -136,7 +138,7 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                AGENDE SUA CONSULTA
+                {t("hero.cta")}
               </WhatsAppMotionCta>
             </motion.div>
           </motion.div>
@@ -153,7 +155,7 @@ const HeroSection = () => {
                 <motion.img
                   key={current}
                   src={images[current]}
-                  alt="Aurum Mística"
+                  alt={t("hero.photoAlt")}
                   className="absolute inset-0 w-full h-full object-cover"
                   initial={{ opacity: 0, scale: 1.15 }}
                   animate={{ opacity: 1, scale: 1 }}

@@ -13,20 +13,3 @@ export function readStoredLocale(): AppLocale | null {
 export function writeStoredLocale(locale: AppLocale): void {
   localStorage.setItem(LOCALE_STORAGE_KEY, locale);
 }
-
-/**
- * First matching language from the browser: es → Spanish, en → English.
- * Portuguese (any `pt-*`) or anything else → null so the site stays on default Portuguese URLs.
- */
-export function detectBrowserLocale(): "en" | "es" | null {
-  if (typeof navigator === "undefined") return null;
-  const list = [...(navigator.languages ?? []), navigator.language].filter(Boolean);
-  for (const raw of list) {
-    const code = raw.split("-")[0]?.toLowerCase();
-    if (!code) continue;
-    if (code === "pt") return null;
-    if (code === "es") return "es";
-    if (code === "en") return "en";
-  }
-  return null;
-}

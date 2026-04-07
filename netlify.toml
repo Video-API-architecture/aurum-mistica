@@ -2,6 +2,11 @@
   command = "npm run build"
   publish = "dist"
 
+# VITE_* values are public (injected into HTML/JS). Netlify still treats matching env values as
+# secrets unless we exclude these keys from the scan.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SITE_URL,VITE_GOOGLE_SITE_VERIFICATION"
+
 # Client-side routes (e.g. /whatsapp) must serve index.html.
 [[redirects]]
   from = "/*"

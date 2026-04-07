@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const siteUrl = (env.VITE_SITE_URL || "https://aurummisticaoficial.com.br").replace(/\/$/, "");
+  const siteUrl = (env.VITE_SITE_URL || "http://localhost:8080").replace(/\/$/, "");
 
   function escapeHtmlAttr(value: string) {
     return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;");

@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -8,20 +9,23 @@ import {
 } from "@/constants/whatsapp";
 
 type Props = {
-  /** Extra classes for the first block (e.g. mt-4 in modal vs mt-10 on full page). */
   numberBlockClassName?: string;
 };
 
+const strongClass = { strong: <strong className="text-foreground" /> };
+
 const WhatsAppHelperNumberAndActions = ({ numberBlockClassName = "mt-10" }: Props) => {
+  const { t } = useTranslation();
+
   const copyNumber = useCallback(async () => {
     const text = WHATSAPP_E164_PLUS;
     try {
       await navigator.clipboard.writeText(text);
-      toast.success("Número copiado! Cole no WhatsApp.");
+      toast.success(t("whatsappHelper.copied"));
     } catch {
-      toast.error("Não foi possível copiar. Anote o número na tela.");
+      toast.error(t("whatsappHelper.copyError"));
     }
-  }, []);
+  }, [t]);
 
   return (
     <>
@@ -38,20 +42,20 @@ const WhatsAppHelperNumberAndActions = ({ numberBlockClassName = "mt-10" }: Prop
         className="mt-8 inline-flex items-center gap-2 rounded-lg bg-gradient-gold px-8 py-4 font-semibold text-primary-foreground shadow-gold transition-transform hover:scale-[1.02] active:scale-[0.98]"
       >
         <Copy className="h-5 w-5" aria-hidden />
-        Copiar número com DDI
+        {t("whatsappHelper.copyBtn")}
       </button>
 
       <div className="mt-10 rounded-xl border border-border/50 bg-muted/30 p-5 text-left text-sm text-muted-foreground">
-        <p className="font-medium text-foreground">Como abrir no WhatsApp a partir do TikTok</p>
+        <p className="font-medium text-foreground">{t("whatsappHelper.tiktokTitle")}</p>
         <ol className="mt-3 list-decimal space-y-2 pl-5">
           <li>
-            Toque em <strong className="text-foreground">⋯</strong> (três pontos) no canto da tela.
+            <Trans i18nKey="whatsappHelper.tiktokStep1" components={strongClass} />
           </li>
           <li>
-            Escolha <strong className="text-foreground">Abrir no navegador</strong> (Chrome ou Safari).
+            <Trans i18nKey="whatsappHelper.tiktokStep2" components={strongClass} />
           </li>
           <li>
-            Volte ao site e use o botão &quot;Abrir WhatsApp&quot; abaixo, ou cole o número que você copiou.
+            <Trans i18nKey="whatsappHelper.tiktokStep3" components={strongClass} />
           </li>
         </ol>
       </div>
@@ -62,7 +66,7 @@ const WhatsAppHelperNumberAndActions = ({ numberBlockClassName = "mt-10" }: Prop
         rel="noopener noreferrer"
         className="mt-8 inline-block text-sm font-semibold text-primary underline underline-offset-4 hover:text-primary/80"
       >
-        Abrir WhatsApp (funciona melhor no navegador externo)
+        {t("whatsappHelper.openLink")}
       </a>
     </>
   );

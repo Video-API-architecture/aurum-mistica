@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next";
 import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 
 const FloatingWhatsApp = () => {
+  const { t } = useTranslation();
   return (
     <div className="pointer-events-none fixed bottom-6 right-6 z-50 flex items-end justify-end">
       <WhatsAppMotionCta
@@ -10,7 +12,7 @@ const FloatingWhatsApp = () => {
         transition={{ delay: 2, type: "spring", stiffness: 200, damping: 15 }}
         whileHover={{ scale: 1.15 }}
         whileTap={{ scale: 0.95 }}
-        title="Fale conosco no WhatsApp"
+        title={t("floatingWhatsapp.title")}
       >
         <span className="text-2xl">💬</span>
       </WhatsAppMotionCta>

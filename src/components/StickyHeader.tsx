@@ -1,23 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useOptionalLocale } from "@/contexts/LocaleContext";
+import { localizedPath } from "@/lib/locale";
 
 const StickyHeader = () => {
+  const { t } = useTranslation();
+  const localeCtx = useOptionalLocale();
+  const prefix = localeCtx?.prefix ?? "";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const links = useMemo(
+    () => [
+      { label: t("nav.services"), href: "#servicos" },
+      { label: t("nav.howItWorks"), href: "#como-funciona" },
+      { label: t("nav.about"), href: "#sobre" },
+      { label: t("nav.testimonials"), href: "#depoimentos" },
+      { label: t("nav.faq"), href: "#faq" },
+    ],
+    [t]
+  );
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const links = [
-    { label: "Serviços", href: "#servicos" },
-    { label: "Como Funciona", href: "#como-funciona" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Depoimentos", href: "#depoimentos" },
-    { label: "FAQ", href: "#faq" },
-  ];
+  const homePath = localizedPath(prefix, "/");
 
   return (
     <motion.header
@@ -30,48 +43,51 @@ const StickyHeader = () => {
     >
       <div className="container mx-auto flex h-16 min-w-0 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <a
-          href="#hero"
+          href={`${homePath}#hero`}
           className="min-w-0 shrink font-display text-lg font-bold text-primary transition-opacity hover:opacity-80 sm:text-xl"
         >
           Aurum Mística
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6">
-          {links.map((link, i) => (
-            <motion.a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group"
+        <div className="hidden md:flex items-center gap-4">
+          <LanguageSwitcher />
+          <nav className="flex items-center gap-6">
+            {links.map((link, i) => (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+              </motion.a>
+            ))}
+            <WhatsAppMotionCta
+              toWhatsAppPage
+              className="shimmer bg-gradient-gold text-primary-foreground text-sm font-semibold px-5 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
             >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-            </motion.a>
-          ))}
-          <WhatsAppMotionCta
-            toWhatsAppPage
-            className="shimmer bg-gradient-gold text-primary-foreground text-sm font-semibold px-5 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.4 }}
-          >
-            Consultar Agora
-          </WhatsAppMotionCta>
-        </nav>
+              {t("nav.consultNow")}
+            </WhatsAppMotionCta>
+          </nav>
+        </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden text-foreground text-2xl hover:text-primary transition-colors duration-300"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? "✕" : "☰"}
-        </button>
+        <div className="flex items-center gap-1 md:hidden">
+          <LanguageSwitcher />
+          <button
+            className="text-foreground text-2xl hover:text-primary transition-colors duration-300"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -103,7 +119,7 @@ const StickyHeader = () => {
                 transition={{ delay: 0.25, duration: 0.3 }}
                 onClick={() => setMenuOpen(false)}
               >
-                Consultar Agora
+                {t("nav.consultNow")}
               </WhatsAppMotionCta>
             </nav>
           </motion.div>

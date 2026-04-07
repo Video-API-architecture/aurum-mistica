@@ -59,7 +59,7 @@ const HeroSection = () => {
 
       <StarField />
 
-      {/* Floating mystical icons — clipped so transforms never widen the page */}
+      {/* Floating Mistical icons — clipped so transforms never widen the page */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
         {floatingIcons.map((icon, i) => (
           <motion.span

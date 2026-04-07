@@ -1,6 +1,6 @@
 import type { AppLocale } from "./locale";
 
-/** Persisted when the user picks a language (switcher). Drives auto-routing on unprefixed URLs. */
+/** Persisted from the URL and when the user picks a language (switcher). */
 export const LOCALE_STORAGE_KEY = "aurum-locale-preference";
 
 export function readStoredLocale(): AppLocale | null {

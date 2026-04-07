@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { AppLocale, LocalePrefix } from "@/lib/locale";
@@ -13,7 +13,7 @@ type Props = {
 const LocaleLayout = ({ locale, prefix }: Props) => {
   const { i18n } = useTranslation();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     void i18n.changeLanguage(locale);
     document.documentElement.lang = htmlLangFor(locale);
   }, [locale, i18n]);

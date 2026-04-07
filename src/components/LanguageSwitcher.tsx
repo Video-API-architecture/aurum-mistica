@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useLocale } from "@/contexts/LocaleContext";
 import type { AppLocale } from "@/lib/locale";
 import { pathForLocale, stripLocalePrefix } from "@/lib/locale";
 import { writeStoredLocale } from "@/lib/localePreference";
@@ -25,11 +26,11 @@ const LOCALES: { code: AppLocale; labelKey: string }[] = [
 ];
 
 const LanguageSwitcher = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const { locale: current } = useLocale();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const bare = stripLocalePrefix(pathname);
-  const current = (i18n.language === "en" || i18n.language === "es" ? i18n.language : "pt") as AppLocale;
 
   const go = (locale: AppLocale) => {
     writeStoredLocale(locale);

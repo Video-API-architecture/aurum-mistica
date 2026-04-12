@@ -6,7 +6,6 @@ import ServicesSection from "@/components/ServicesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import AboutSection from "@/components/AboutSection";
 import SocialProofSection from "@/components/SocialProofSection";
-import SoundCloudPlayerBar from "@/components/SoundCloudPlayerBar";
 import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import FooterSection from "@/components/FooterSection";
@@ -24,7 +23,6 @@ const Index = () => {
       </Helmet>
       <SoundCloudPlayerProvider>
         <main className="min-h-screen bg-background">
-          <SoundCloudPlayerBar />
           <StickyHeader />
           <HeroSection />
           <ServicesSection />

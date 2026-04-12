@@ -32,7 +32,7 @@ const SoundCloudPlayerBar = () => {
   return (
     <div
       className={cn(
-        "relative z-30 w-full bg-black/95 shadow-[0_12px_40px_-8px_rgb(0_0_0/0.85)] backdrop-blur-xl",
+        "relative z-30 w-full bg-black/95 shadow-[0_-8px_32px_-8px_rgb(0_0_0/0.5)] backdrop-blur-xl",
         !expanded && "pointer-events-none",
       )}
       style={{
@@ -42,12 +42,12 @@ const SoundCloudPlayerBar = () => {
     >
       <div
         className={cn(
-          "grid min-h-0 w-full overflow-hidden border-b border-white/10 transition-[grid-template-rows] duration-700 ease-out",
+          "grid min-h-0 w-full overflow-hidden border-t border-white/10 transition-[grid-template-rows] duration-700 ease-out",
           expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
         )}
       >
         <div className="min-h-0 overflow-hidden">
-          <div className="pt-[env(safe-area-inset-top,0px)]">
+          <div className="pb-[env(safe-area-inset-bottom,0px)]">
             <div className="mx-auto flex max-w-6xl items-center px-3 py-2.5 sm:px-6">
               <div
                 className={cn(

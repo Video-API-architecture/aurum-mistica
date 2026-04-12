@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import StickyHeader from "@/components/StickyHeader";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
+import EnergeticServicesSection from "@/components/EnergeticServicesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import AboutSection from "@/components/AboutSection";
 import SocialProofSection from "@/components/SocialProofSection";
@@ -24,6 +25,7 @@ const Index = () => {
         <StickyHeader />
         <HeroSection />
         <ServicesSection />
+        <EnergeticServicesSection />
         <HowItWorksSection />
         <AboutSection />
         <SocialProofSection />

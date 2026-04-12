@@ -156,6 +156,49 @@
     "requestReading": "Solicitar lectura",
     "mostPopular": "MÁS POPULAR"
   },
+  "energeticServices": {
+    "title": "💫",
+    "titleAccent": "TABLA DE SERVICIOS ENERGÉTICOS",
+    "categories": [
+      {
+        "name": "🌹 Endulzamiento",
+        "lines": [
+          { "text": "Básico (vela + ritual)", "price": "R$ 97" },
+          { "text": "Completo (3 a 7 días + seguimiento)", "price": "R$ 180" }
+        ]
+      },
+      {
+        "name": "🔥 Seducción (magnetismo personal)",
+        "lines": [
+          { "text": "Básico", "price": "R$ 120" },
+          { "text": "Completo (con refuerzo energético)", "price": "R$ 200" }
+        ]
+      },
+      {
+        "name": "👑 Empoderamiento",
+        "lines": [
+          { "text": "Básico (ritual + fortalecimiento)", "price": "R$ 110" },
+          { "text": "Completo (proceso + seguimiento)", "price": "R$ 190" }
+        ]
+      },
+      {
+        "name": "🛤️ Apertura de caminos",
+        "lines": [
+          { "text": "Básico", "price": "R$ 137" },
+          { "text": "Completo (limpieza + apertura + seguimiento)", "price": "R$ 220" }
+        ]
+      }
+    ],
+    "extrasTitle": "✨ Extras (opcional para que ganes más)",
+    "extras": [
+      { "text": "Atención urgente", "price": "+ R$ 20 a R$ 50" },
+      { "text": "Refuerzo energético", "price": "+ R$ 30" },
+      { "text": "Consulta personalizada (tirada/consejo)", "price": "R$ 50 a R$ 100" }
+    ],
+    "tipTitle": "💡 Consejo de oro",
+    "tipIntro": "Puedes armar combos, por ejemplo:",
+    "comboExample": "💖 Endulzamiento + Seducción → R$ 150 (en lugar de R$ 180)"
+  },
   "servicePage": {
     "back": "Volver a servicios",
     "aboutTitle": "Sobre este servicio",

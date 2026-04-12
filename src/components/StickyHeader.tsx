@@ -34,7 +34,9 @@ const StickyHeader = () => {
 
   return (
     <motion.header
-      initial={false}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`sticky top-0 z-50 w-full max-w-full overflow-x-hidden transition-[background-color,box-shadow,border-color,backdrop-filter] duration-500 ${
         scrolled ? "bg-background/95 backdrop-blur-md border-b border-border/30 shadow-lg" : "bg-transparent"
       }`}

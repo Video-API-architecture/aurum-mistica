@@ -5,11 +5,14 @@ import cosmicBg from "@/assets/cosmic-bg.jpg";
 import aurum1 from "@/assets/aurum-1.jpeg";
 import aurum2 from "@/assets/aurum-2.jpeg";
 import aurum3 from "@/assets/aurum-3.jpeg";
+import aurum4 from "@/assets/aurum-4.jpeg";
+import aurum5 from "@/assets/aurum-5.jpeg";
+import aurum6 from "@/assets/aurum-6.jpeg";
 import { AnimatePresence } from "framer-motion";
 import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 import StarField from "@/components/StarField";
 
-const images = [aurum1, aurum2, aurum3];
+const images = [aurum1, aurum2, aurum3, aurum4, aurum5, aurum6];
 
 const floatingIcons = ["🌙", "⭐", "🔮", "✨", "🌟", "☽"];
 

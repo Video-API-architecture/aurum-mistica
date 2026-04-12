@@ -91,6 +91,11 @@
       }
     ]
   },
+  "music": {
+    "trackTitle": "Athair Ar Neamh",
+    "trackArtists": "Enya (remaster 2009)",
+    "iframeTitle": "Reproductor SoundCloud — {{track}}"
+  },
   "faq": {
     "title": "Preguntas",
     "titleAccent": "frecuentes",

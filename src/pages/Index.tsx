@@ -6,10 +6,12 @@ import ServicesSection from "@/components/ServicesSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import AboutSection from "@/components/AboutSection";
 import SocialProofSection from "@/components/SocialProofSection";
+import SoundCloudPlayerBar from "@/components/SoundCloudPlayerBar";
 import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import FooterSection from "@/components/FooterSection";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { SoundCloudPlayerProvider } from "@/contexts/SoundCloudPlayerContext";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -20,18 +22,21 @@ const Index = () => {
         <title>{t("meta.homeTitle")}</title>
         <meta name="description" content={t("meta.homeDesc")} />
       </Helmet>
-      <main className="min-h-screen overflow-x-hidden bg-background">
-        <StickyHeader />
-        <HeroSection />
-        <ServicesSection />
-        <HowItWorksSection />
-        <AboutSection />
-        <SocialProofSection />
-        <FAQSection />
-        <FinalCTASection />
-        <FooterSection />
-        <FloatingWhatsApp />
-      </main>
+      <SoundCloudPlayerProvider>
+        <main className="min-h-screen bg-background">
+          <SoundCloudPlayerBar />
+          <StickyHeader />
+          <HeroSection />
+          <ServicesSection />
+          <HowItWorksSection />
+          <AboutSection />
+          <SocialProofSection />
+          <FAQSection />
+          <FinalCTASection />
+          <FooterSection />
+          <FloatingWhatsApp />
+        </main>
+      </SoundCloudPlayerProvider>
     </>
   );
 };

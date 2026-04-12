@@ -122,6 +122,15 @@
     box-shadow: 0 0 30px -10px hsl(270 50% 30% / 0.2);
   }
 
+  /** SoundCloud bar — black embed chrome + subtle gold edge */
+  .music-player-shell {
+    @apply overflow-hidden rounded-xl border border-white/10 bg-black backdrop-blur-sm;
+    box-shadow:
+      inset 0 1px 0 hsl(43 80% 52% / 0.12),
+      0 0 24px -8px hsl(0 0% 0% / 0.8),
+      0 0 16px -6px hsl(43 80% 52% / 0.08);
+  }
+
   .sparkle {
     animation: sparkle 3s ease-in-out infinite;
   }

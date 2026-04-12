@@ -45,7 +45,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen w-full max-w-full flex-col items-center justify-center overflow-x-hidden scroll-mt-20 pt-20 md:scroll-mt-16 md:pt-16"
+      className="relative flex min-h-screen w-full max-w-full flex-col items-center justify-center overflow-x-hidden scroll-mt-32 pt-10 md:scroll-mt-28 md:pt-8"
     >
       <div className="absolute inset-0">
         <img

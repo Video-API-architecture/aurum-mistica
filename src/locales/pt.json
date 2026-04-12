@@ -161,6 +161,49 @@
     "requestReading": "Solicitar Leitura",
     "mostPopular": "MAIS POPULAR"
   },
+  "energeticServices": {
+    "title": "💫",
+    "titleAccent": "TABELA DE SERVIÇOS ENERGÉTICOS",
+    "categories": [
+      {
+        "name": "🌹 ADOÇAMENTO",
+        "lines": [
+          { "text": "Básico (vela + ritual)", "price": "R$ 97" },
+          { "text": "Completo (3 a 7 dias + acompanhamento)", "price": "R$ 180" }
+        ]
+      },
+      {
+        "name": "🔥 SEDUÇÃO (MAGNETISMO PESSOAL)",
+        "lines": [
+          { "text": "Básico", "price": "R$ 120" },
+          { "text": "Completo (com reforço energético)", "price": "R$ 200" }
+        ]
+      },
+      {
+        "name": "👑 EMPODERAMENTO",
+        "lines": [
+          { "text": "Básico (ritual + fortalecimento)", "price": "R$ 110" },
+          { "text": "Completo (processo + acompanhamento)", "price": "R$ 190" }
+        ]
+      },
+      {
+        "name": "🛤️ ABERTURA DE CAMINHOS",
+        "lines": [
+          { "text": "Básico", "price": "R$ 137" },
+          { "text": "Completo (limpeza + abertura + acompanhamento)", "price": "R$ 220" }
+        ]
+      }
+    ],
+    "extrasTitle": "✨ EXTRAS (opcional pra você ganhar mais):",
+    "extras": [
+      { "text": "Atendimento urgente", "price": "+ R$ 20 a R$ 50" },
+      { "text": "Reforço energético", "price": "+ R$ 30" },
+      { "text": "Consulta personalizada (tiragem/conselho)", "price": "R$ 50 a R$ 100" }
+    ],
+    "tipTitle": "💡 Dica de ouro",
+    "tipIntro": "Você pode fazer combos, tipo:",
+    "comboExample": "💖 Adoçamento + Sedução → R$ 150 (em vez de R$ 180)"
+  },
   "servicePage": {
     "back": "Voltar aos Serviços",
     "aboutTitle": "Sobre este Serviço",

@@ -161,6 +161,49 @@
     "requestReading": "Request reading",
     "mostPopular": "MOST POPULAR"
   },
+  "energeticServices": {
+    "title": "💫",
+    "titleAccent": "ENERGY SERVICES PRICE LIST",
+    "categories": [
+      {
+        "name": "🌹 Sweetening",
+        "lines": [
+          { "text": "Basic (candle + ritual)", "price": "R$ 97" },
+          { "text": "Complete (3–7 days + follow-up)", "price": "R$ 180" }
+        ]
+      },
+      {
+        "name": "🔥 Seduction (personal magnetism)",
+        "lines": [
+          { "text": "Basic", "price": "R$ 120" },
+          { "text": "Complete (with energetic reinforcement)", "price": "R$ 200" }
+        ]
+      },
+      {
+        "name": "👑 Empowerment",
+        "lines": [
+          { "text": "Basic (ritual + strengthening)", "price": "R$ 110" },
+          { "text": "Complete (process + follow-up)", "price": "R$ 190" }
+        ]
+      },
+      {
+        "name": "🛤️ Opening paths",
+        "lines": [
+          { "text": "Basic", "price": "R$ 137" },
+          { "text": "Complete (cleansing + opening + follow-up)", "price": "R$ 220" }
+        ]
+      }
+    ],
+    "extrasTitle": "✨ Extras (optional upsells)",
+    "extras": [
+      { "text": "Rush service", "price": "+ R$ 20 to R$ 50" },
+      { "text": "Energetic reinforcement", "price": "+ R$ 30" },
+      { "text": "Personalized consultation (reading/advice)", "price": "R$ 50 to R$ 100" }
+    ],
+    "tipTitle": "💡 Golden tip",
+    "tipIntro": "You can offer bundles, for example:",
+    "comboExample": "💖 Sweetening + Seduction → R$ 150 (instead of R$ 180)"
+  },
   "servicePage": {
     "back": "Back to services",
     "aboutTitle": "About this service",

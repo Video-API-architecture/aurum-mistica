@@ -91,6 +91,11 @@
       }
     ]
   },
+  "music": {
+    "trackTitle": "Athair Ar Neamh",
+    "trackArtists": "Enya (2009 Remaster)",
+    "iframeTitle": "SoundCloud player — {{track}}"
+  },
   "faq": {
     "title": "Frequently",
     "titleAccent": "Asked Questions",

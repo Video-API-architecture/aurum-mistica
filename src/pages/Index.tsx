@@ -11,6 +11,7 @@ import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import FooterSection from "@/components/FooterSection";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { SoundCloudPlayerProvider } from "@/contexts/SoundCloudPlayerContext";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -21,19 +22,21 @@ const Index = () => {
         <title>{t("meta.homeTitle")}</title>
         <meta name="description" content={t("meta.homeDesc")} />
       </Helmet>
-      <main className="min-h-screen overflow-x-hidden bg-background">
-        <StickyHeader />
-        <HeroSection />
-        <ServicesSection />
-        <EnergeticServicesSection />
-        <HowItWorksSection />
-        <AboutSection />
-        <SocialProofSection />
-        <FAQSection />
-        <FinalCTASection />
-        <FooterSection />
-        <FloatingWhatsApp />
-      </main>
+      <SoundCloudPlayerProvider>
+        <main className="min-h-screen overflow-x-hidden bg-background">
+          <StickyHeader />
+          <HeroSection />
+          <ServicesSection />
+          <EnergeticServicesSection />
+          <HowItWorksSection />
+          <AboutSection />
+          <SocialProofSection />
+          <FAQSection />
+          <FinalCTASection />
+          <FooterSection />
+          <FloatingWhatsApp />
+        </main>
+      </SoundCloudPlayerProvider>
     </>
   );
 };

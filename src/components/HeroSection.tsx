@@ -11,6 +11,8 @@ import aurum6 from "@/assets/aurum-6.jpeg";
 import { AnimatePresence } from "framer-motion";
 import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
 import StarField from "@/components/StarField";
+import SoundCloudPlayerBar from "@/components/SoundCloudPlayerBar";
+import { MUSIC_SECTION_ID } from "@/lib/soundcloudEmbed";
 
 const images = [aurum1, aurum2, aurum3, aurum4, aurum5, aurum6];
 
@@ -48,7 +50,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen w-full max-w-full flex-col items-center justify-center overflow-x-hidden scroll-mt-20 pt-20 md:scroll-mt-16 md:pt-16"
+      className="relative flex min-h-[min(85vh,880px)] w-full max-w-full flex-col overflow-x-hidden scroll-mt-32 pt-8 md:scroll-mt-28 md:pt-6"
     >
       <div className="absolute inset-0">
         <img
@@ -92,7 +94,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      <div className="relative z-10 box-border mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
+      <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center box-border mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6">
         <div className="grid w-full min-w-0 grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1fr)_min(16rem,32vw)] lg:gap-8 xl:grid-cols-[minmax(0,1fr)_20rem] xl:gap-12">
           <motion.div
             className="min-w-0 text-center lg:text-left"
@@ -190,19 +192,23 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="text-primary/40 text-2xl"
-        >
-          <motion.span
-            animate={{ opacity: [0.3, 0.8, 0.3] }}
+      <div id={MUSIC_SECTION_ID} className="relative z-20 mt-auto flex w-full shrink-0 flex-col scroll-mt-24">
+        <div className="flex justify-center py-3">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="text-primary/40 text-2xl"
+            aria-hidden
           >
-            ↓
-          </motion.span>
-        </motion.div>
+            <motion.span
+              animate={{ opacity: [0.3, 0.8, 0.3] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            >
+              ↓
+            </motion.span>
+          </motion.div>
+        </div>
+        <SoundCloudPlayerBar />
       </div>
     </section>
   );

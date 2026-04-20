@@ -168,37 +168,36 @@
       {
         "name": "🌹 ADOÇAMENTO",
         "lines": [
-          { "text": "Básico (vela + ritual)", "price": "R$ 97" },
-          { "text": "Completo (3 a 7 dias + acompanhamento)", "price": "R$ 180" }
+          { "text": "Coletivo (vela + ritual)", "price": "R$ 97" },
+          { "text": "Individual", "price": "R$ 177" }
         ]
       },
       {
         "name": "🔥 SEDUÇÃO (MAGNETISMO PESSOAL)",
         "lines": [
-          { "text": "Básico", "price": "R$ 120" },
-          { "text": "Completo (com reforço energético)", "price": "R$ 200" }
+          { "text": "Coletivo", "price": "R$ 97" },
+          { "text": "Individual", "price": "R$ 157" }
         ]
       },
       {
         "name": "👑 EMPODERAMENTO",
         "lines": [
-          { "text": "Básico (ritual + fortalecimento)", "price": "R$ 110" },
-          { "text": "Completo (processo + acompanhamento)", "price": "R$ 190" }
+          { "text": "Coletivo (ritual + fortalecimento)", "price": "R$ 97" },
+          { "text": "Individual (processo + acompanhamento)", "price": "R$ 167" }
         ]
       },
       {
         "name": "🛤️ ABERTURA DE CAMINHOS",
         "lines": [
-          { "text": "Básico", "price": "R$ 137" },
-          { "text": "Completo (limpeza + abertura + acompanhamento)", "price": "R$ 220" }
+          { "text": "Coletivo", "price": "R$ 137" },
+          { "text": "Individual (limpeza + abertura + acompanhamento)", "price": "R$ 237" }
         ]
       }
     ],
-    "extrasTitle": "✨ EXTRAS (opcional pra você ganhar mais):",
+    "extrasTitle": "✨ EXTRAS",
     "extras": [
-      { "text": "Atendimento urgente", "price": "+ R$ 20 a R$ 50" },
-      { "text": "Reforço energético", "price": "+ R$ 30" },
-      { "text": "Consulta personalizada (tiragem/conselho)", "price": "R$ 50 a R$ 100" }
+      { "text": "Atendimento urgente", "price": "+R$20" },
+      { "text": "Consulta personalizada (tiragem/conselho)", "price": "R$ 30" }
     ],
     "tipTitle": "💡 Dica de ouro",
     "tipIntro": "Você pode fazer combos, tipo:",

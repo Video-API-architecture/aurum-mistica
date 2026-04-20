@@ -168,37 +168,36 @@
       {
         "name": "🌹 Endulzamiento",
         "lines": [
-          { "text": "Básico (vela + ritual)", "price": "R$ 97" },
-          { "text": "Completo (3 a 7 días + seguimiento)", "price": "R$ 180" }
+          { "text": "Colectivo (vela + ritual)", "price": "R$ 97" },
+          { "text": "Individual", "price": "R$ 177" }
         ]
       },
       {
         "name": "🔥 Seducción (magnetismo personal)",
         "lines": [
-          { "text": "Básico", "price": "R$ 120" },
-          { "text": "Completo (con refuerzo energético)", "price": "R$ 200" }
+          { "text": "Colectivo", "price": "R$ 97" },
+          { "text": "Individual", "price": "R$ 157" }
         ]
       },
       {
         "name": "👑 Empoderamiento",
         "lines": [
-          { "text": "Básico (ritual + fortalecimiento)", "price": "R$ 110" },
-          { "text": "Completo (proceso + seguimiento)", "price": "R$ 190" }
+          { "text": "Colectivo (ritual + fortalecimiento)", "price": "R$ 97" },
+          { "text": "Individual (proceso + seguimiento)", "price": "R$ 167" }
         ]
       },
       {
         "name": "🛤️ Apertura de caminos",
         "lines": [
-          { "text": "Básico", "price": "R$ 137" },
-          { "text": "Completo (limpieza + apertura + seguimiento)", "price": "R$ 220" }
+          { "text": "Colectivo", "price": "R$ 137" },
+          { "text": "Individual (limpieza + apertura + seguimiento)", "price": "R$ 237" }
         ]
       }
     ],
-    "extrasTitle": "✨ Extras (opcional para que ganes más)",
+    "extrasTitle": "✨ Extras",
     "extras": [
-      { "text": "Atención urgente", "price": "+ R$ 20 a R$ 50" },
-      { "text": "Refuerzo energético", "price": "+ R$ 30" },
-      { "text": "Consulta personalizada (tirada/consejo)", "price": "R$ 50 a R$ 100" }
+      { "text": "Atención urgente", "price": "+R$20" },
+      { "text": "Consulta personalizada (tirada/consejo)", "price": "R$ 30" }
     ],
     "tipTitle": "💡 Consejo de oro",
     "tipIntro": "Puedes armar combos, por ejemplo:",

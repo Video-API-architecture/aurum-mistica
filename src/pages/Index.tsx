@@ -1,5 +1,8 @@
-import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import WebsiteSeo from "@/components/WebsiteSeo";
+import { useLocale } from "@/contexts/LocaleContext";
+import { getSiteUrl } from "@/lib/siteUrl";
 import StickyHeader from "@/components/StickyHeader";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -15,13 +18,18 @@ import { SoundCloudPlayerProvider } from "@/contexts/SoundCloudPlayerContext";
 
 const Index = () => {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const { locale } = useLocale();
+  const canonicalUrl = `${getSiteUrl()}${pathname}`;
 
   return (
     <>
-      <Helmet>
-        <title>{t("meta.homeTitle")}</title>
-        <meta name="description" content={t("meta.homeDesc")} />
-      </Helmet>
+      <WebsiteSeo
+        title={t("meta.homeTitle")}
+        description={t("meta.homeDesc")}
+        canonicalUrl={canonicalUrl}
+        locale={locale}
+      />
       <SoundCloudPlayerProvider>
         <main className="min-h-screen overflow-x-hidden bg-background">
           <StickyHeader />

@@ -142,6 +142,7 @@
       "services": "Services",
       "about": "About",
       "faq": "FAQ",
+      "blog": "Blog",
       "contact": "Contact"
     },
     "disclaimer": "Sessions are spiritual and energetic in nature and do not replace medical, psychological, or financial treatment.",
@@ -246,6 +247,10 @@
     "homeTitle": "Aurum Mística | Tarot readings & spiritual guidance",
     "homeDesc": "Tarot consultations and spiritual guidance with personalized readings.",
     "whatsappTitle": "WhatsApp | Aurum Mística",
+    "whatsappDesc": "Talk to Aurum Mística on WhatsApp. Use the number on this page or open it in your browser if you are in TikTok or Instagram.",
+    "blogListTitle": "Blog | Aurum Mística",
+    "blogListDesc": "Astrological forecasts, tarot guides, and spiritual reflections from Aurum Mística.",
+    "notFoundDesc": "This page does not exist or has been moved.",
     "serviceTitle": "{{title}} | Aurum Mística",
     "notFoundTitle": "Page not found | Aurum Mística"
   }

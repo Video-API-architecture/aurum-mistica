@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import WebsiteSeo from "@/components/WebsiteSeo";
+import { getSiteUrl } from "@/lib/siteUrl";
 import { useTranslation } from "react-i18next";
 import type { ServiceData } from "@/data/services";
 import { useServiceCatalog } from "@/hooks/useServiceCatalog";
@@ -344,6 +346,10 @@ const ServiceNotFound = () => {
 
   return (
     <main className="min-h-screen bg-background overflow-x-hidden">
+      <Helmet>
+        <title>{t("servicePage.notFoundTitle")} | Aurum Mística</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <StickyHeader />
       <div className="flex min-h-screen items-center justify-center px-6">
         <div className="text-center">
@@ -369,6 +375,7 @@ const ServicePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation();
   const { bySlug } = useServiceCatalog();
+  const { localizedPath, locale } = useLocale();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -378,12 +385,16 @@ const ServicePage = () => {
 
   if (!service) return <ServiceNotFound />;
 
+  const canonicalUrl = `${getSiteUrl()}${localizedPath(`/servicos/${slug}`)}`;
+
   return (
     <main className="min-h-screen bg-background overflow-x-hidden">
-      <Helmet>
-        <title>{t("meta.serviceTitle", { title: service.title })}</title>
-        <meta name="description" content={service.subtitle} />
-      </Helmet>
+      <WebsiteSeo
+        title={t("meta.serviceTitle", { title: service.title })}
+        description={service.subtitle}
+        canonicalUrl={canonicalUrl}
+        locale={locale}
+      />
       <StickyHeader />
       <ServiceHeroSection service={service} backLabel={t("servicePage.back")} />
       <ServiceDetailsSection

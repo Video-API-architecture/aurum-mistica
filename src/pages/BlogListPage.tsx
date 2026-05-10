@@ -1,7 +1,10 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import WebsiteSeo from "@/components/WebsiteSeo";
+import { useLocale } from "@/contexts/LocaleContext";
+import { getSiteUrl } from "@/lib/siteUrl";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import StickyHeader from "@/components/StickyHeader";
 import FooterSection from "@/components/FooterSection";
@@ -31,10 +34,12 @@ function formatDate(iso: string): string {
   });
 }
 
-const siteUrl = (import.meta.env.VITE_SITE_URL as string | undefined ?? "").replace(/\/$/, "") || window.location.origin;
-
 const BlogListPage = () => {
   const { posts } = useBlogPosts();
+  const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const { locale } = useLocale();
+  const canonicalUrl = `${getSiteUrl()}${pathname}`;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -42,19 +47,12 @@ const BlogListPage = () => {
 
   return (
     <main className="min-h-screen bg-background overflow-x-hidden">
-      <Helmet>
-        <title>Blog | Aurum Mística</title>
-        <meta name="description" content="Previsões astrológicas, guias de tarot e reflexões espirituais do Aurum Mística." />
-        <link rel="canonical" href={`${siteUrl}/blog`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Blog | Aurum Mística" />
-        <meta property="og:description" content="Previsões astrológicas, guias de tarot e reflexões espirituais do Aurum Mística." />
-        <meta property="og:url" content={`${siteUrl}/blog`} />
-        <meta property="og:image" content={`${siteUrl}/og-share.png`} />
-        <meta name="twitter:title" content="Blog | Aurum Mística" />
-        <meta name="twitter:description" content="Previsões astrológicas, guias de tarot e reflexões espirituais do Aurum Mística." />
-        <meta name="twitter:image" content={`${siteUrl}/og-share.png`} />
-      </Helmet>
+      <WebsiteSeo
+        title={t("meta.blogListTitle")}
+        description={t("meta.blogListDesc")}
+        canonicalUrl={canonicalUrl}
+        locale={locale}
+      />
 
       <StickyHeader />
 

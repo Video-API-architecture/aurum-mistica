@@ -52,3 +52,10 @@ export function htmlLangFor(locale: AppLocale): string {
   if (locale === "pt") return "pt-BR";
   return locale;
 }
+
+/** Open Graph `og:locale` tag value. */
+export function openGraphLocaleFor(locale: AppLocale): string {
+  if (locale === "pt") return "pt_BR";
+  if (locale === "en") return "en_US";
+  return "es_ES";
+}

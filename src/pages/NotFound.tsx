@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
+import WebsiteSeo from "@/components/WebsiteSeo";
 import type { AppLocale } from "@/lib/locale";
 import { pathForLocale } from "@/lib/locale";
+import { getSiteUrl } from "@/lib/siteUrl";
 
 const NotFound = () => {
   const location = useLocation();
@@ -28,12 +29,17 @@ const NotFound = () => {
         ? "es"
         : "pt";
   const homePath = pathForLocale(locale, "/");
+  const canonicalUrl = `${getSiteUrl()}${location.pathname}`;
 
   return (
     <>
-      <Helmet>
-        <title>{t("meta.notFoundTitle")}</title>
-      </Helmet>
+      <WebsiteSeo
+        title={t("meta.notFoundTitle")}
+        description={t("meta.notFoundDesc")}
+        canonicalUrl={canonicalUrl}
+        locale={locale}
+        robotsNoIndex
+      />
       <div className="flex min-h-screen items-center justify-center bg-muted">
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-bold">{t("notFound.title")}</h1>

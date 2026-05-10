@@ -1,19 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
+import WebsiteSeo from "@/components/WebsiteSeo";
 import { useLocale } from "@/contexts/LocaleContext";
+import { getSiteUrl } from "@/lib/siteUrl";
 import WhatsAppHelperNumberAndActions from "@/components/WhatsAppHelperNumberAndActions";
 
 const WhatsAppChatPage = () => {
   const { t } = useTranslation();
-  const { localizedPath } = useLocale();
+  const { localizedPath, locale } = useLocale();
+  const { pathname } = useLocation();
+  const canonicalUrl = `${getSiteUrl()}${pathname}`;
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>{t("meta.whatsappTitle")}</title>
-      </Helmet>
+      <WebsiteSeo
+        title={t("meta.whatsappTitle")}
+        description={t("meta.whatsappDesc")}
+        canonicalUrl={canonicalUrl}
+        locale={locale}
+      />
       <header className="border-b border-border/30 bg-background/95 backdrop-blur-md">
         <div className="container mx-auto flex h-14 max-w-2xl items-center px-4">
           <Link

@@ -142,6 +142,7 @@
       "services": "Serviços",
       "about": "Sobre",
       "faq": "FAQ",
+      "blog": "Blog",
       "contact": "Contato"
     },
     "disclaimer": "Os atendimentos possuem caráter espiritual e energético, não substituindo tratamentos médicos, psicológicos ou financeiros.",
@@ -246,6 +247,10 @@
     "homeTitle": "Aurum Mística | Consultas de Tarot e Orientação Espiritual",
     "homeDesc": "Consultas de tarot e orientação espiritual com leituras personalizadas.",
     "whatsappTitle": "WhatsApp | Aurum Mística",
+    "whatsappDesc": "Fale com a Aurum Mística pelo WhatsApp. Use o número no site ou abra esta página no navegador se estiver no TikTok ou Instagram.",
+    "blogListTitle": "Blog | Aurum Mística",
+    "blogListDesc": "Previsões astrológicas, guias de tarot e reflexões espirituais da Aurum Mística.",
+    "notFoundDesc": "Esta página não existe ou foi movida.",
     "serviceTitle": "{{title}} | Aurum Mística",
     "notFoundTitle": "Página não encontrada | Aurum Mística"
   }

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { getSiteUrl } from "@/lib/siteUrl";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import StickyHeader from "@/components/StickyHeader";
 import FooterSection from "@/components/FooterSection";
@@ -44,30 +45,34 @@ function formatDate(iso: string): string {
   });
 }
 
-const siteUrl = (import.meta.env.VITE_SITE_URL as string | undefined ?? "").replace(/\/$/, "") || window.location.origin;
-
 const BlogNotFound = () => (
-  <main className="min-h-screen bg-background overflow-x-hidden">
-    <StickyHeader />
-    <div className="flex min-h-screen items-center justify-center px-6">
-      <div className="text-center">
-        <p className="text-5xl mb-6">🌙</p>
-        <h1 className="text-2xl font-display font-bold text-shimmer-gold mb-4">
-          Artigo não encontrado
-        </h1>
-        <p className="text-muted-foreground mb-8">
-          Este artigo não existe ou foi removido.
-        </p>
-        <Link
-          to="/blog"
-          className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg"
-        >
-          Ver todos os artigos
-        </Link>
+  <>
+    <Helmet>
+      <title>Artigo não encontrado | Aurum Mística</title>
+      <meta name="robots" content="noindex, nofollow" />
+    </Helmet>
+    <main className="min-h-screen bg-background overflow-x-hidden">
+      <StickyHeader />
+      <div className="flex min-h-screen items-center justify-center px-6">
+        <div className="text-center">
+          <p className="text-5xl mb-6">🌙</p>
+          <h1 className="text-2xl font-display font-bold text-shimmer-gold mb-4">
+            Artigo não encontrado
+          </h1>
+          <p className="text-muted-foreground mb-8">
+            Este artigo não existe ou foi removido.
+          </p>
+          <Link
+            to="/blog"
+            className="shimmer inline-block bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg"
+          >
+            Ver todos os artigos
+          </Link>
+        </div>
       </div>
-    </div>
-    <FooterSection />
-  </main>
+      <FooterSection />
+    </main>
+  </>
 );
 
 const BlogPostPage = () => {
@@ -82,19 +87,21 @@ const BlogPostPage = () => {
 
   if (!post) return <BlogNotFound />;
 
+  const base = getSiteUrl();
+
   return (
     <main className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
         <title>{post.title} | Aurum Mística</title>
         <meta name="description" content={post.description} />
-        <link rel="canonical" href={`${siteUrl}/blog/${post.slug}`} />
+        <link rel="canonical" href={`${base}/blog/${post.slug}`} />
 
         {/* Open Graph — article */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content={`${post.title} | Aurum Mística`} />
         <meta property="og:description" content={post.description} />
-        <meta property="og:url" content={`${siteUrl}/blog/${post.slug}`} />
-        <meta property="og:image" content={`${siteUrl}/og-share.png`} />
+        <meta property="og:url" content={`${base}/blog/${post.slug}`} />
+        <meta property="og:image" content={`${base}/og-share.png`} />
         <meta property="article:published_time" content={post.date} />
         <meta property="article:author" content="Aurum Mística" />
         {post.tags.map((tag) => (
@@ -105,7 +112,7 @@ const BlogPostPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${post.title} | Aurum Mística`} />
         <meta name="twitter:description" content={post.description} />
-        <meta name="twitter:image" content={`${siteUrl}/og-share.png`} />
+        <meta name="twitter:image" content={`${base}/og-share.png`} />
 
         {/* JSON-LD BlogPosting */}
         <script type="application/ld+json">{JSON.stringify({
@@ -116,21 +123,21 @@ const BlogPostPage = () => {
           datePublished: post.date,
           dateModified: post.date,
           inLanguage: "pt-BR",
-          url: `${siteUrl}/blog/${post.slug}`,
-          image: `${siteUrl}/og-share.png`,
+          url: `${base}/blog/${post.slug}`,
+          image: `${base}/og-share.png`,
           keywords: post.tags.join(", "),
           author: {
             "@type": "Organization",
             name: "Aurum Mística",
-            url: siteUrl,
+            url: base,
           },
           publisher: {
             "@type": "Organization",
             name: "Aurum Mística",
-            logo: { "@type": "ImageObject", url: `${siteUrl}/og-share.png` },
+            logo: { "@type": "ImageObject", url: `${base}/og-share.png` },
           },
           about: { "@type": "Thing", name: post.sign },
-          mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}/blog/${post.slug}` },
+          mainEntityOfPage: { "@type": "WebPage", "@id": `${base}/blog/${post.slug}` },
         })}</script>
       </Helmet>
 

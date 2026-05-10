@@ -9,6 +9,8 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import WhatsAppChatPage from "./pages/WhatsAppChatPage.tsx";
 import ServicePage from "./pages/ServicePage.tsx";
+import BlogListPage from "./pages/BlogListPage.tsx";
+import BlogPostPage from "./pages/BlogPostPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="whatsapp" element={<WhatsAppChatPage />} />
             <Route path="servicos/:slug" element={<ServicePage />} />
+            <Route path="blog" element={<BlogListPage />} />
+            <Route path="blog/:slug" element={<BlogPostPage />} />
           </Route>
 
           <Route path="/en" element={<LocaleLayout locale="en" prefix="/en" />}>

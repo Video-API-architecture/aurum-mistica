@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import WhatsAppMotionCta from "@/components/WhatsAppMotionCta";
@@ -15,11 +16,12 @@ const StickyHeader = () => {
 
   const links = useMemo(
     () => [
-      { label: t("nav.services"), href: "#servicos" },
-      { label: t("nav.howItWorks"), href: "#como-funciona" },
-      { label: t("nav.about"), href: "#sobre" },
-      { label: t("nav.testimonials"), href: "#depoimentos" },
-      { label: t("nav.faq"), href: "#faq" },
+      { label: t("nav.services"), href: "#servicos", isRoute: false },
+      { label: t("nav.howItWorks"), href: "#como-funciona", isRoute: false },
+      { label: t("nav.about"), href: "#sobre", isRoute: false },
+      { label: t("nav.testimonials"), href: "#depoimentos", isRoute: false },
+      { label: t("nav.faq"), href: "#faq", isRoute: false },
+      { label: t("nav.blog"), href: "/blog", isRoute: true },
     ],
     [t]
   );
@@ -52,19 +54,37 @@ const StickyHeader = () => {
         <div className="hidden md:flex items-center gap-4">
           <LanguageSwitcher />
           <nav className="flex items-center gap-6">
-            {links.map((link, i) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-              </motion.a>
-            ))}
+            {links.map((link, i) =>
+              link.isRoute ? (
+                <motion.span
+                  key={link.href}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                  className="relative group"
+                >
+                  <Link
+                    to={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium"
+                  >
+                    {link.label}
+                  </Link>
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                </motion.span>
+              ) : (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                </motion.a>
+              )
+            )}
             <WhatsAppMotionCta
               toWhatsAppPage
               className="shimmer bg-gradient-gold text-primary-foreground text-sm font-semibold px-5 py-2 rounded-lg hover:scale-105 transition-transform duration-300"
@@ -98,19 +118,36 @@ const StickyHeader = () => {
             className="md:hidden bg-background/98 backdrop-blur-md border-b border-border/30 overflow-hidden"
           >
             <nav className="flex flex-col items-center gap-4 py-6">
-              {links.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-base text-muted-foreground hover:text-primary transition-colors font-medium"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
+              {links.map((link, i) =>
+                link.isRoute ? (
+                  <motion.span
+                    key={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.3 }}
+                  >
+                    <Link
+                      to={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="text-base text-muted-foreground hover:text-primary transition-colors font-medium"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.span>
+                ) : (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-base text-muted-foreground hover:text-primary transition-colors font-medium"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.3 }}
+                  >
+                    {link.label}
+                  </motion.a>
+                )
+              )}
               <WhatsAppMotionCta
                 toWhatsAppPage
                 className="shimmer bg-gradient-gold text-primary-foreground font-semibold px-8 py-3 rounded-lg mt-2"

@@ -7,7 +7,8 @@
 [build.environment]
   SECRETS_SCAN_OMIT_KEYS = "VITE_SITE_URL,VITE_GOOGLE_SITE_VERIFICATION"
 
-# Client-side routes (e.g. /whatsapp) must serve index.html.
+# Static files in dist (e.g. dist/blog/<slug>/index.html) are served first.
+# SPA fallback for routes without a matching file.
 [[redirects]]
   from = "/*"
   to = "/index.html"

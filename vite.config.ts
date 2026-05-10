@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
+import { prerenderBlogHtmlPlugin } from "./vite/prerenderBlogHtmlPlugin";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -66,6 +67,7 @@ export default defineConfig(({ mode }) => {
           .replace("    __JSON_LD_ORGANIZATION__\n", ldScript);
       },
     },
+    prerenderBlogHtmlPlugin(siteUrl),
   ].filter(Boolean),
   resolve: {
     alias: {

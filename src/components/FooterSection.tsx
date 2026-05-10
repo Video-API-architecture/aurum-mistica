@@ -20,7 +20,6 @@ const FooterSection = () => {
     { kind: "hash", hash: "sobre", labelKey: "footer.links.about" },
     { kind: "hash", hash: "faq", labelKey: "footer.links.faq" },
     { kind: "route", to: "/blog", labelKey: "footer.links.blog" },
-    { kind: "hash", hash: "contato", labelKey: "footer.links.contact" },
   ];
 
   return (

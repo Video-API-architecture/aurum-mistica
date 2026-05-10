@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { prerenderBlogHtmlPlugin } from "./vite/prerenderBlogHtmlPlugin";
+import { generateSitemapPlugin } from "./vite/generateSitemapPlugin";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -68,6 +69,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     prerenderBlogHtmlPlugin(siteUrl),
+    generateSitemapPlugin(siteUrl),
   ].filter(Boolean),
   resolve: {
     alias: {

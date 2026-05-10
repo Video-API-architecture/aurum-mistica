@@ -52,6 +52,7 @@ const BlogListPage = () => {
         description={t("meta.blogListDesc")}
         canonicalUrl={canonicalUrl}
         locale={locale}
+        keywords={t("meta.blogListKeywords")}
       />
 
       <StickyHeader />

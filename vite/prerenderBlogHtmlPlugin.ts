@@ -4,6 +4,16 @@ import { fileURLToPath } from "node:url";
 import type { Plugin } from "vite";
 import { BLOG_POSTS } from "../src/data/blog/posts";
 import type { BlogPost } from "../src/data/blog/types";
+import { getAllServicesFlat } from "../src/data/services";
+import type { ServiceData } from "../src/data/serviceCatalog/types";
+import {
+  pathForLocale,
+  htmlLangFor,
+  openGraphLocaleFor,
+  type AppLocale,
+} from "../src/lib/locale";
+
+const LOCALES: AppLocale[] = ["pt", "en", "es"];
 
 function escapeHtmlAttr(value: string): string {
   return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
@@ -18,6 +28,13 @@ function replaceNameDescription(html: string, content: string): string {
   return html.replace(
     /<meta(?:\s*\n\s*)?name="description"[\s\S]*?\/>/,
     `<meta name="description" content="${escapeHtmlAttr(content)}" />`,
+  );
+}
+
+function replaceKeywords(html: string, content: string): string {
+  return html.replace(
+    /<meta(?:\s*\n\s*)?name="keywords"[\s\S]*?\/>/,
+    `<meta name="keywords" content="${escapeHtmlAttr(content)}" />`,
   );
 }
 
@@ -77,6 +94,20 @@ function applyArticlePublishedTime(html: string, isoDate: string): string {
   );
 }
 
+function replaceHtmlLang(html: string, lang: string): string {
+  return html.replace(/<html lang="[^"]*"/, `<html lang="${escapeHtmlAttr(lang)}"`);
+}
+
+/** Aligns `<html lang>` and `og:locale` with routed locale (pt/en/es service pages). */
+function applyLocaleDocument(html: string, locale: AppLocale): string {
+  let out = replaceHtmlLang(html, htmlLangFor(locale));
+  out = out.replace(
+    /<meta property="og:locale" content="[^"]*"\s*\/>/,
+    `<meta property="og:locale" content="${openGraphLocaleFor(locale)}" />`,
+  );
+  return out;
+}
+
 function applyPageMeta(
   html: string,
   opts: {
@@ -112,36 +143,70 @@ function blogPostPageHtml(template: string, post: BlogPost, siteUrl: string): st
   return html;
 }
 
-function blogListPageHtml(template: string, title: string, description: string, siteUrl: string): string {
+function blogListPageHtml(
+  template: string,
+  title: string,
+  description: string,
+  keywords: string,
+  siteUrl: string,
+): string {
   const pageUrl = `${siteUrl}/blog`;
-  return applyPageMeta(template, {
+  let html = applyPageMeta(template, {
     title,
     description,
     pageUrl,
     ogType: "website",
   });
+  html = replaceKeywords(html, keywords);
+  return html;
+}
+
+/** Service detail routes use `/servicos/:slug` (PT) and `/en|/es/servicos/:slug`. */
+function serviceDetailPageHtml(
+  template: string,
+  service: ServiceData,
+  locale: AppLocale,
+  siteUrl: string,
+): string {
+  const routePath = pathForLocale(locale, `/servicos/${service.slug}`);
+  const pageUrl = `${siteUrl}${routePath}`;
+  const title = `${service.title} | Aurum Mística`;
+  let html = applyPageMeta(template, {
+    title,
+    description: service.subtitle,
+    pageUrl,
+    ogType: "website",
+  });
+  html = applyLocaleDocument(html, locale);
+  return html;
 }
 
 export function prerenderBlogHtmlPlugin(siteUrl: string): Plugin {
   const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
   return {
-    name: "prerender-blog-html",
+    name: "prerender-crawler-html",
     apply: "build",
     closeBundle() {
       const distIndex = path.join(projectRoot, "dist/index.html");
       if (!fs.existsSync(distIndex)) {
-        console.warn("[prerender-blog-html] dist/index.html missing; skipping.");
+        console.warn("[prerender-crawler-html] dist/index.html missing; skipping.");
         return;
       }
 
       const template = fs.readFileSync(distIndex, "utf8");
       const ptPath = path.join(projectRoot, "src/locales/pt.json");
       const pt = JSON.parse(fs.readFileSync(ptPath, "utf8")) as {
-        meta: { blogListTitle: string; blogListDesc: string };
+        meta: { blogListTitle: string; blogListDesc: string; blogListKeywords: string };
       };
 
-      const listHtml = blogListPageHtml(template, pt.meta.blogListTitle, pt.meta.blogListDesc, siteUrl);
+      const listHtml = blogListPageHtml(
+        template,
+        pt.meta.blogListTitle,
+        pt.meta.blogListDesc,
+        pt.meta.blogListKeywords,
+        siteUrl,
+      );
       fs.mkdirSync(path.join(projectRoot, "dist", "blog"), { recursive: true });
       fs.writeFileSync(path.join(projectRoot, "dist", "blog", "index.html"), listHtml);
 
@@ -152,7 +217,22 @@ export function prerenderBlogHtmlPlugin(siteUrl: string): Plugin {
         fs.writeFileSync(path.join(dir, "index.html"), html);
       }
 
-      console.log(`[prerender-blog-html] wrote /blog + ${BLOG_POSTS.length} post HTML shells for crawlers`);
+      let serviceShellCount = 0;
+      for (const locale of LOCALES) {
+        for (const service of getAllServicesFlat(locale)) {
+          const html = serviceDetailPageHtml(template, service, locale, siteUrl);
+          const routePath = pathForLocale(locale, `/servicos/${service.slug}`);
+          const segments = routePath.split("/").filter(Boolean);
+          const dir = path.join(projectRoot, "dist", ...segments);
+          fs.mkdirSync(dir, { recursive: true });
+          fs.writeFileSync(path.join(dir, "index.html"), html);
+          serviceShellCount++;
+        }
+      }
+
+      console.log(
+        `[prerender-crawler-html] blog: index + ${BLOG_POSTS.length} posts; servicos: ${serviceShellCount} shells (all locales)`,
+      );
     },
   };
 }

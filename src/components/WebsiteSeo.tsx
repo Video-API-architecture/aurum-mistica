@@ -9,9 +9,18 @@ type Props = {
   canonicalUrl: string;
   locale: AppLocale;
   robotsNoIndex?: boolean;
+  /** Optional comma-separated keywords (`meta name="keywords"`). */
+  keywords?: string;
 };
 
-const WebsiteSeo = ({ title, description, canonicalUrl, locale, robotsNoIndex }: Props) => {
+const WebsiteSeo = ({
+  title,
+  description,
+  canonicalUrl,
+  locale,
+  robotsNoIndex,
+  keywords,
+}: Props) => {
   const base = getSiteUrl();
   const imageUrl = `${base}/og-share.png`;
 
@@ -19,6 +28,7 @@ const WebsiteSeo = ({ title, description, canonicalUrl, locale, robotsNoIndex }:
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {keywords ? <meta name="keywords" content={keywords} /> : null}
       {robotsNoIndex ? (
         <meta name="robots" content="noindex, nofollow" />
       ) : (

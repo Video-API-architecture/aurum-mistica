@@ -1,22 +1,26 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useOptionalLocale } from "@/contexts/LocaleContext";
 import WhatsAppPlainCta from "@/components/WhatsAppPlainCta";
 
 type FooterLink =
-  | { kind: "hash"; href: string; labelKey: string }
+  | { kind: "hash"; hash: string; labelKey: string }
   | { kind: "route"; to: string; labelKey: string };
 
 const FooterSection = () => {
   const { t } = useTranslation();
   const year = new Date().getFullYear();
+  const localeCtx = useOptionalLocale();
+  /** Home path for the active locale so #sections resolve on the landing page, not on /blog etc. */
+  const homePath = localeCtx?.localizedPath("/") ?? "/";
 
   const links: FooterLink[] = [
-    { kind: "hash", href: "#servicos", labelKey: "footer.links.services" },
-    { kind: "hash", href: "#sobre", labelKey: "footer.links.about" },
-    { kind: "hash", href: "#faq", labelKey: "footer.links.faq" },
+    { kind: "hash", hash: "servicos", labelKey: "footer.links.services" },
+    { kind: "hash", hash: "sobre", labelKey: "footer.links.about" },
+    { kind: "hash", hash: "faq", labelKey: "footer.links.faq" },
     { kind: "route", to: "/blog", labelKey: "footer.links.blog" },
-    { kind: "hash", href: "#contato", labelKey: "footer.links.contact" },
+    { kind: "hash", hash: "contato", labelKey: "footer.links.contact" },
   ];
 
   return (
@@ -40,15 +44,15 @@ const FooterSection = () => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-4">{t("footer.quickLinks")}</h4>
             <ul className="space-y-2 text-sm">
               {links.map((link) => (
-                <li key={link.kind === "hash" ? link.href : link.to}>
+                <li key={link.kind === "hash" ? link.hash : link.to}>
                   {link.kind === "hash" ? (
-                    <a
-                      href={link.href}
+                    <Link
+                      to={{ pathname: homePath, hash: link.hash }}
                       className="text-muted-foreground hover:text-primary transition-colors duration-300 inline-flex items-center gap-1 group"
                     >
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primary text-xs">✦</span>
                       {t(link.labelKey)}
-                    </a>
+                    </Link>
                   ) : (
                     <Link
                       to={link.to}

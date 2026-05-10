@@ -99,49 +99,51 @@ const BlogListPage = () => {
                 key={post.slug}
                 variants={cardVariant}
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className="card-mystical p-6 glow-border-hover flex flex-col gap-4"
+                className="card-mystical glow-border-hover flex flex-col"
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-4xl">{post.signEmoji}</span>
-                  <span className="text-xs text-muted-foreground uppercase tracking-widest font-medium">
-                    {post.sign}
-                  </span>
-                </div>
-
-                <h2 className="font-display text-lg font-bold text-foreground leading-snug line-clamp-3">
-                  {post.title}
-                </h2>
-
-                <p className="text-muted-foreground text-sm font-light leading-relaxed line-clamp-3 flex-1">
-                  {post.description}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {post.tags.slice(0, 4).map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20"
-                    >
-                      {tag}
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="flex flex-col gap-4 p-6 flex-1 cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-4xl">{post.signEmoji}</span>
+                    <span className="text-xs text-muted-foreground uppercase tracking-widest font-medium">
+                      {post.sign}
                     </span>
-                  ))}
-                </div>
+                  </div>
 
-                <div className="flex items-center justify-between pt-2 border-t border-border/30">
-                  <time
-                    dateTime={post.date}
-                    className="text-xs text-muted-foreground"
-                  >
-                    {formatDate(post.date)}
-                  </time>
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="text-primary text-sm font-semibold hover:underline inline-flex items-center gap-1 transition-all duration-200 group"
-                  >
-                    Ler mais
-                    <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
-                  </Link>
-                </div>
+                  <h2 className="font-display text-lg font-bold text-foreground leading-snug line-clamp-3 hover:text-primary transition-colors duration-200">
+                    {post.title}
+                  </h2>
+
+                  <p className="text-muted-foreground text-sm font-light leading-relaxed line-clamp-3 flex-1">
+                    {post.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {post.tags.slice(0, 4).map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between pt-2 border-t border-border/30">
+                    <time
+                      dateTime={post.date}
+                      className="text-xs text-muted-foreground"
+                    >
+                      {formatDate(post.date)}
+                    </time>
+                    <span className="text-primary text-sm font-semibold inline-flex items-center gap-1 group-hover:underline">
+                      Ler mais
+                      <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                    </span>
+                  </div>
+                </Link>
               </motion.article>
             ))}
           </motion.div>

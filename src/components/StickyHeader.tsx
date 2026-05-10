@@ -16,12 +16,12 @@ const StickyHeader = () => {
 
   const links = useMemo(
     () => [
-      { label: t("nav.services"), href: "#servicos", isRoute: false },
-      { label: t("nav.howItWorks"), href: "#como-funciona", isRoute: false },
-      { label: t("nav.about"), href: "#sobre", isRoute: false },
-      { label: t("nav.testimonials"), href: "#depoimentos", isRoute: false },
-      { label: t("nav.faq"), href: "#faq", isRoute: false },
-      { label: t("nav.blog"), href: "/blog", isRoute: true },
+      { label: t("nav.services"), hash: "servicos", isRoute: false },
+      { label: t("nav.howItWorks"), hash: "como-funciona", isRoute: false },
+      { label: t("nav.about"), hash: "sobre", isRoute: false },
+      { label: t("nav.testimonials"), hash: "depoimentos", isRoute: false },
+      { label: t("nav.faq"), hash: "faq", isRoute: false },
+      { label: t("nav.blog"), to: "/blog", isRoute: true },
     ],
     [t]
   );
@@ -57,14 +57,14 @@ const StickyHeader = () => {
             {links.map((link, i) =>
               link.isRoute ? (
                 <motion.span
-                  key={link.href}
+                  key={link.to}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
                   className="relative group"
                 >
                   <Link
-                    to={link.href}
+                    to={link.to}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium"
                   >
                     {link.label}
@@ -72,17 +72,21 @@ const StickyHeader = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
                 </motion.span>
               ) : (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium relative group"
+                <motion.span
+                  key={link.hash}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                  className="relative group"
                 >
-                  {link.label}
+                  <Link
+                    to={{ pathname: homePath, hash: link.hash }}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium"
+                  >
+                    {link.label}
+                  </Link>
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-                </motion.a>
+                </motion.span>
               )
             )}
             <WhatsAppMotionCta
@@ -121,13 +125,13 @@ const StickyHeader = () => {
               {links.map((link, i) =>
                 link.isRoute ? (
                   <motion.span
-                    key={link.href}
+                    key={link.to}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05, duration: 0.3 }}
                   >
                     <Link
-                      to={link.href}
+                      to={link.to}
                       onClick={() => setMenuOpen(false)}
                       className="text-base text-muted-foreground hover:text-primary transition-colors font-medium"
                     >
@@ -135,17 +139,20 @@ const StickyHeader = () => {
                     </Link>
                   </motion.span>
                 ) : (
-                  <motion.a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="text-base text-muted-foreground hover:text-primary transition-colors font-medium"
+                  <motion.span
+                    key={link.hash}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05, duration: 0.3 }}
                   >
-                    {link.label}
-                  </motion.a>
+                    <Link
+                      to={{ pathname: homePath, hash: link.hash }}
+                      onClick={() => setMenuOpen(false)}
+                      className="text-base text-muted-foreground hover:text-primary transition-colors font-medium"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.span>
                 )
               )}
               <WhatsAppMotionCta

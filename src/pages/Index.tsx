@@ -15,12 +15,14 @@ import FinalCTASection from "@/components/FinalCTASection";
 import FooterSection from "@/components/FooterSection";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { SoundCloudPlayerProvider } from "@/contexts/SoundCloudPlayerContext";
+import { useScrollToHash } from "@/hooks/useScrollToHash";
 
 const Index = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const { locale } = useLocale();
   const canonicalUrl = `${getSiteUrl()}${pathname}`;
+  useScrollToHash();
 
   return (
     <>

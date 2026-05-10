@@ -4,11 +4,12 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { prerenderBlogHtmlPlugin } from "./vite/prerenderBlogHtmlPlugin";
 import { generateSitemapPlugin } from "./vite/generateSitemapPlugin";
+import { normalizeSiteUrlForBuild } from "./vite/normalizeSiteUrl";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const siteUrl = (env.VITE_SITE_URL || "http://localhost:8080").replace(/\/$/, "");
+  const siteUrl = normalizeSiteUrlForBuild(env.VITE_SITE_URL || "http://localhost:8080", mode);
 
   function escapeHtmlAttr(value: string) {
     return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;");

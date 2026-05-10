@@ -2,6 +2,11 @@
   command = "npm run build"
   publish = "dist"
 
+# Google Search Console — “Page with redirect” is often caused by:
+# - Sitemap/canonicals using http:// while the live site is https:// (build normalizes http→https for production).
+# - www vs apex mismatch: set Netlify primary domain, then set VITE_SITE_URL to that EXACT host
+#   (same URL-prefix property in Search Console). The non-primary host will redirect — don’t list it in sitemap.
+#
 # VITE_* values are public (injected into HTML/JS). Netlify still treats matching env values as
 # secrets unless we exclude these keys from the scan.
 [build.environment]
